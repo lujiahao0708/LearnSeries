@@ -1,0 +1,19 @@
+
+# rocketmq\u914D\u7F6E\u4FE1\u606F
+rocketmq:
+  consumer:
+    namesrvAddr: 127.0.0.1:9876
+    groupName: TradeConsumerGroup
+    topic: TestTradeSystemTopic
+    tag: '*'
+    batchMaxSize: 16
+    instance-name: TradeConsumer
+  producer:
+    namesrvAddr: 127.0.0.1:9876
+    groupName: TradeProducerGroup
+    topic: TestTradeSystemTopic
+    tag: '*'
+    batchMaxSize: 16
+    instance-name: TradeProducer
+    maxMessageSize: 32
+    sendMsgTimeout: 100
