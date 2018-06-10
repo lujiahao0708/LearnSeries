@@ -1,4 +1,4 @@
-package com.lujiahao.trade.common.rocketmq;
+package com.lujiahao.trade.middleware.rocketmq;
 
 import org.apache.commons.collections.MapUtils;
 import org.slf4j.Logger;

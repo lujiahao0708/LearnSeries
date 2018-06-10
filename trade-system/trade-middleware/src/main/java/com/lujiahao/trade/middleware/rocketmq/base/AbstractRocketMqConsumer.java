@@ -1,4 +1,4 @@
-package com.lujiahao.trade.common.rocketmq.base;
+package com.lujiahao.trade.middleware.rocketmq.base;
 
 import com.alibaba.rocketmq.client.consumer.DefaultMQPushConsumer;
 import com.alibaba.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
@@ -7,7 +7,7 @@ import com.alibaba.rocketmq.client.consumer.listener.MessageListenerConcurrently
 import com.alibaba.rocketmq.client.exception.MQClientException;
 import com.alibaba.rocketmq.common.consumer.ConsumeFromWhere;
 import com.alibaba.rocketmq.common.message.MessageExt;
-import com.lujiahao.trade.common.rocketmq.IConsumer;
+import com.lujiahao.trade.middleware.rocketmq.IConsumer;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

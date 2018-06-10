@@ -23,6 +23,7 @@
         <module>trade-web</module>
         <module>trade-user</module>
         <module>trade-dao</module>
+        <module>trade-middleware</module>
     </modules>
 
     <properties>

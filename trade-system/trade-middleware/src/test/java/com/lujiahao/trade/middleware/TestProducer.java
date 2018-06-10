@@ -1,6 +1,6 @@
-package com.lujiahao.trade.common;
+package com.lujiahao.trade.middleware;
 
-import com.lujiahao.trade.common.rocketmq.TradeProducer;
+import com.lujiahao.trade.middleware.rocketmq.TradeProducer;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

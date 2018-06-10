@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.lujiahao.trade.dao.mapper")
+//@MapperScan(basePackages = "com.lujiahao.trade.dao.mapper")
 @ComponentScan(basePackages = "com.lujiahao.trade.user")
 public class TradeUserApplication {
 

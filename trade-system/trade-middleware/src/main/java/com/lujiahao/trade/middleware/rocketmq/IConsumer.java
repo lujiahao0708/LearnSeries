@@ -1,4 +1,4 @@
-package com.lujiahao.trade.common.rocketmq;
+package com.lujiahao.trade.middleware.rocketmq;
 
 /**
  * 消费者的统一接口

@@ -1,4 +1,4 @@
-package com.lujiahao.trade.common;
+package com.lujiahao.trade.middleware;
 
 import org.junit.Test;
 

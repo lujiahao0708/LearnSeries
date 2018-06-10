@@ -1,4 +1,4 @@
-package com.lujiahao.trade.common.rocketmq.base;
+package com.lujiahao.trade.middleware.rocketmq.base;
 
 import lombok.Data;
 
