@@ -1,7 +1,7 @@
 package com.lujiahao.trade.dao.mapper;
 
-import com.lujiahao.trade.dao.model.TradeGoodsNumberLog;
-import com.lujiahao.trade.dao.model.TradeGoodsNumberLogExample;
+import com.lujiahao.trade.dao.entity.TradeGoodsNumberLog;
+import com.lujiahao.trade.dao.entity.TradeGoodsNumberLogExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

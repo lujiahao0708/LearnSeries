@@ -1,7 +1,7 @@
 package com.lujiahao.trade.dao.mapper;
 
-import com.lujiahao.trade.dao.model.TradePay;
-import com.lujiahao.trade.dao.model.TradePayExample;
+import com.lujiahao.trade.dao.entity.TradePay;
+import com.lujiahao.trade.dao.entity.TradePayExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

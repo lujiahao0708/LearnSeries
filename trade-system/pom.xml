@@ -21,6 +21,8 @@
         <module>trade-common</module>
         <module>trade-coupon</module>
         <module>trade-web</module>
+        <module>trade-user</module>
+        <module>trade-dao</module>
     </modules>
 
     <properties>
@@ -30,7 +32,8 @@
         <rocketmq.version>3.4.6</rocketmq.version>
         <apache.commons.lang3.version>3.3.2</apache.commons.lang3.version>
         <apache.commons.collections.version>3.2.2</apache.commons.collections.version>
-
+        <fastjson.version>1.2.7</fastjson.version>
+        <perf4j.version>0.9.16</perf4j.version>
     </properties>
 
     <dependencies>
@@ -40,17 +43,34 @@
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
 
+        <!-- alibaba fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <!-- perf4j -->
+        <dependency>
+            <groupId>org.perf4j</groupId>
+            <artifactId>perf4j</artifactId>
+            <version>${perf4j.version}</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

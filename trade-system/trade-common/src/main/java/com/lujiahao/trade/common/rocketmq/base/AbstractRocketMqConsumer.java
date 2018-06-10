@@ -8,6 +8,7 @@ import com.alibaba.rocketmq.client.exception.MQClientException;
 import com.alibaba.rocketmq.common.consumer.ConsumeFromWhere;
 import com.alibaba.rocketmq.common.message.MessageExt;
 import com.lujiahao.trade.common.rocketmq.IConsumer;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,6 +40,10 @@ public abstract class AbstractRocketMqConsumer implements IConsumer {
 
     public void listen() {
         try {
+            // todo 校验
+            if (StringUtils.isBlank(mqProperty.getGroupName())) {
+                return;
+            }
             consumer = new DefaultMQPushConsumer(mqProperty.getGroupName());
             // MQ地址
             consumer.setNamesrvAddr(mqProperty.getNamesrvAddr());

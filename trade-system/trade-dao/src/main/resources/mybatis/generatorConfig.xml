@@ -24,7 +24,7 @@
         </javaTypeResolver>
 
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="com.lujiahao.trade.dao.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.lujiahao.trade.dao.entity" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -33,6 +33,9 @@
         <sqlMapGenerator targetPackage="mybatis/mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
+        <!--<sqlMapGenerator targetPackage="com.lujiahao.trade.mapper" targetProject="src/main/java">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</sqlMapGenerator>-->
 
         <!--生成Dao类存放位置-->
         <!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码

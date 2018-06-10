@@ -1,7 +1,7 @@
 package com.lujiahao.trade.dao.mapper;
 
-import com.lujiahao.trade.dao.model.TradeCoupon;
-import com.lujiahao.trade.dao.model.TradeCouponExample;
+import com.lujiahao.trade.dao.entity.TradeCoupon;
+import com.lujiahao.trade.dao.entity.TradeCouponExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

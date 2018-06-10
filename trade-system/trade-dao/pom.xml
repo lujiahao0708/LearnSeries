@@ -22,6 +22,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.lujiahao</groupId>
+            <artifactId>trade-common</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>1.3.2</version>
@@ -30,6 +36,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <!--<version>5.1.45</version>-->
         </dependency>
 
         <dependency>
@@ -37,6 +44,7 @@
             <artifactId>druid</artifactId>
             <version>1.1.6</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -58,6 +66,19 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <!-- 一定要声明如下配置-->
+        <!--<resources>-->
+            <!--<resource>-->
+                <!--<directory>src/main/java</directory>-->
+                <!--<includes>-->
+                    <!--<include>**/*.xml</include>-->
+                <!--</includes>-->
+            <!--</resource>-->
+            <!--<resource>-->
+                <!--<directory>src/main/resources</directory>-->
+            <!--</resource>-->
+        <!--</resources>-->
     </build>
 
 

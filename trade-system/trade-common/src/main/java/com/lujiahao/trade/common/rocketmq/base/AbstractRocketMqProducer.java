@@ -3,8 +3,8 @@ package com.lujiahao.trade.common.rocketmq.base;
 import com.alibaba.rocketmq.client.exception.MQClientException;
 import com.alibaba.rocketmq.client.producer.DefaultMQProducer;
 import com.alibaba.rocketmq.client.producer.SendResult;
-import com.alibaba.rocketmq.common.message.Message;
 import com.lujiahao.trade.common.exception.RocketMqException;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,6 +29,10 @@ public abstract class AbstractRocketMqProducer {
 
     public void init() {
         try {
+            // todo 一些基本参数的校验
+            if (StringUtils.isBlank(mqProperty.getGroupName())) {
+                return;
+            }
             producer = new DefaultMQProducer(mqProperty.getGroupName());
             producer.setNamesrvAddr(mqProperty.getNamesrvAddr());
             producer.setMaxMessageSize(mqProperty.getMaxMessageSize());

@@ -2,8 +2,8 @@ package com.lujiahao.trade.common.rocketmq;
 
 import com.alibaba.rocketmq.client.producer.SendResult;
 import com.alibaba.rocketmq.common.message.Message;
-import com.lujiahao.trade.common.exception.RocketMqException;
 import com.lujiahao.trade.common.rocketmq.base.AbstractRocketMqProducer;
+import com.lujiahao.trade.common.exception.RocketMqException;
 import com.lujiahao.trade.common.rocketmq.base.ProducerProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="LOG_HOME" value="./log"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{traceId} %X{orderNo} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/logFile.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{traceId} %X{orderNo} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/err_logFile.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/err_logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{traceId} %X{orderNo} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ACCESS_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/access-logFile.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/access-logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{traceId} %X{orderNo} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 接口性能日志 -->
+    <appender name="perf4jFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/order-api.perf4j.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/history/%d{yyyyMM,aux}/order-api.perf4j.log.%d{yyyyMMdd}</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>%msg%n</Pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="CoalescingStatistics" class="org.perf4j.logback.AsyncCoalescingStatisticsAppender">
+        <param name="TimeSlice"  value="60000"/>
+        <appender-ref  ref="perf4jFile"/>
+    </appender>
+
+    <!--开发环境日志配置-->
+    <springProfile name="dev">
+        <root level="debug">
+            <appender-ref ref="STDOUT"/>
+        </root>
+        <logger name="com.lujiahao.trade" level="DEBUG"></logger>
+
+        <logger name="org.perf4j.TimingLogger"  level="info" additivity="false">
+            <appender-ref ref="CoalescingStatistics" />
+        </logger>
+    </springProfile>
+
+    <!--测试环境日志配置-->
+    <springProfile name="test">
+        <logger name="com.sq" level="INFO" addtivity="false">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="FILE"/>
+        </logger>
+        <logger name="LOGGER_ACCESS" level="INFO">
+            <appender-ref ref="ACCESS_FILE"/>
+        </logger>
+        <logger name="org.perf4j.TimingLogger"  level="info" additivity="false">
+            <appender-ref ref="CoalescingStatistics" />
+        </logger>
+    </springProfile>
+
+    <springProfile name="pre">
+        <logger name="com.sq" level="INFO" addtivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+        <logger name="LOGGER_ACCESS" level="INFO">
+            <appender-ref ref="ACCESS_FILE"/>
+        </logger>
+        <logger name="org.perf4j.TimingLogger"  level="info" additivity="false">
+            <appender-ref ref="CoalescingStatistics" />
+        </logger>
+        <root level="ERROR">
+            <appender-ref ref="ERROR_FILE"/>
+        </root>
+    </springProfile>
+
+    <!--线上环境日志配置-->
+    <springProfile name="online">
+        <logger name="com.sq" level="INFO" addtivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+        <logger name="LOGGER_ACCESS" level="INFO">
+            <appender-ref ref="ACCESS_FILE"/>
+        </logger>
+        <logger name="org.perf4j.TimingLogger"  level="info" additivity="false">
+            <appender-ref ref="CoalescingStatistics" />
+        </logger>
+        <root level="ERROR">
+            <appender-ref ref="ERROR_FILE"/>
+        </root>
+    </springProfile>
+</configuration>

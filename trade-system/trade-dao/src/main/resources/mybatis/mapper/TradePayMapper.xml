@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lujiahao.trade.dao.mapper.TradePayMapper" >
-  <resultMap id="BaseResultMap" type="com.lujiahao.trade.dao.model.TradePay" >
+  <resultMap id="BaseResultMap" type="com.lujiahao.trade.dao.entity.TradePay" >
     <result column="pay_id" property="payId" jdbcType="VARCHAR" />
     <result column="order_id" property="orderId" jdbcType="VARCHAR" />
     <result column="pay_amount" property="payAmount" jdbcType="DECIMAL" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List" >
     pay_id, order_id, pay_amount, is_paid
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lujiahao.trade.dao.model.TradePayExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lujiahao.trade.dao.entity.TradePayExample" >
     select
     <if test="distinct" >
       distinct
@@ -83,19 +83,19 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.lujiahao.trade.dao.model.TradePayExample" >
+  <delete id="deleteByExample" parameterType="com.lujiahao.trade.dao.entity.TradePayExample" >
     delete from trade_pay
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.lujiahao.trade.dao.model.TradePay" >
+  <insert id="insert" parameterType="com.lujiahao.trade.dao.entity.TradePay" >
     insert into trade_pay (pay_id, order_id, pay_amount, 
       is_paid)
     values (#{payId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{payAmount,jdbcType=DECIMAL}, 
       #{isPaid,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.lujiahao.trade.dao.model.TradePay" >
+  <insert id="insertSelective" parameterType="com.lujiahao.trade.dao.entity.TradePay" >
     insert into trade_pay
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="payId != null" >
@@ -126,7 +126,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.lujiahao.trade.dao.model.TradePayExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.lujiahao.trade.dao.entity.TradePayExample" resultType="java.lang.Integer" >
     select count(*) from trade_pay
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />

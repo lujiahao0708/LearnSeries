@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lujiahao.trade.dao.mapper.TradeUserMapper" >
-  <resultMap id="BaseResultMap" type="com.lujiahao.trade.dao.model.TradeUser" >
+  <resultMap id="BaseResultMap" type="com.lujiahao.trade.dao.entity.TradeUser" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List" >
     user_id, user_name, user_password, user_mobile, user_score, user_reg_time, user_money
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lujiahao.trade.dao.model.TradeUserExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lujiahao.trade.dao.entity.TradeUserExample" >
     select
     <if test="distinct" >
       distinct
@@ -96,13 +96,13 @@
     delete from trade_user
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.lujiahao.trade.dao.model.TradeUserExample" >
+  <delete id="deleteByExample" parameterType="com.lujiahao.trade.dao.entity.TradeUserExample" >
     delete from trade_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.lujiahao.trade.dao.model.TradeUser" >
+  <insert id="insert" parameterType="com.lujiahao.trade.dao.entity.TradeUser" >
     <selectKey resultType="java.lang.Integer" keyProperty="userId" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -113,7 +113,7 @@
       #{userScore,jdbcType=INTEGER}, #{userRegTime,jdbcType=TIMESTAMP}, #{userMoney,jdbcType=DECIMAL}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.lujiahao.trade.dao.model.TradeUser" >
+  <insert id="insertSelective" parameterType="com.lujiahao.trade.dao.entity.TradeUser" >
     <selectKey resultType="java.lang.Integer" keyProperty="userId" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -159,7 +159,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.lujiahao.trade.dao.model.TradeUserExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.lujiahao.trade.dao.entity.TradeUserExample" resultType="java.lang.Integer" >
     select count(*) from trade_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -207,7 +207,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lujiahao.trade.dao.model.TradeUser" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.lujiahao.trade.dao.entity.TradeUser" >
     update trade_user
     <set >
       <if test="userName != null" >
@@ -231,7 +231,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lujiahao.trade.dao.model.TradeUser" >
+  <update id="updateByPrimaryKey" parameterType="com.lujiahao.trade.dao.entity.TradeUser" >
     update trade_user
     set user_name = #{userName,jdbcType=VARCHAR},
       user_password = #{userPassword,jdbcType=VARCHAR},

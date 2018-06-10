@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lujiahao.trade.dao.mapper.TradeOrderMapper" >
-  <resultMap id="BaseResultMap" type="com.lujiahao.trade.dao.model.TradeOrder" >
+  <resultMap id="BaseResultMap" type="com.lujiahao.trade.dao.entity.TradeOrder" >
     <result column="order_id" property="orderId" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="order_status" property="orderStatus" jdbcType="CHAR" />
@@ -86,7 +86,7 @@
     goods_id, goods_number, goods_price, goods_amount, shipping_fee, order_amount, coupon_id, 
     coupon_paid, money_paid, pay_amount, add_time, confirm_time, pay_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lujiahao.trade.dao.model.TradeOrderExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.lujiahao.trade.dao.entity.TradeOrderExample" >
     select
     <if test="distinct" >
       distinct
@@ -101,13 +101,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.lujiahao.trade.dao.model.TradeOrderExample" >
+  <delete id="deleteByExample" parameterType="com.lujiahao.trade.dao.entity.TradeOrderExample" >
     delete from trade_order
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.lujiahao.trade.dao.model.TradeOrder" >
+  <insert id="insert" parameterType="com.lujiahao.trade.dao.entity.TradeOrder" >
     insert into trade_order (order_id, user_id, order_status, 
       pay_status, shipping_status, address, 
       consignee, goods_id, goods_number, 
@@ -123,7 +123,7 @@
       #{moneyPaid,jdbcType=DECIMAL}, #{payAmount,jdbcType=DECIMAL}, #{addTime,jdbcType=TIMESTAMP}, 
       #{confirmTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.lujiahao.trade.dao.model.TradeOrder" >
+  <insert id="insertSelective" parameterType="com.lujiahao.trade.dao.entity.TradeOrder" >
     insert into trade_order
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="orderId != null" >
@@ -250,7 +250,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.lujiahao.trade.dao.model.TradeOrderExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.lujiahao.trade.dao.entity.TradeOrderExample" resultType="java.lang.Integer" >
     select count(*) from trade_order
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
