@@ -1,0 +1,15 @@
+server:
+  context-path: /
+  port: 8081
+
+spring:
+  profiles:
+    active: dev
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://111.231.199.76:3306/trade?useUnicode=yes&amp;characterEncoding=UTF8
+    username: root
+    password: lujiahao123
+    # \u4F7F\u7528druid\u6570\u636E\u6E90
+    type: com.alibaba.druid.pool.DruidDataSource

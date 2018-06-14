@@ -1,5 +1,8 @@
 package com.lujiahao.trade.middleware;
 
+import com.alibaba.rocketmq.client.producer.SendResult;
+import com.lujiahao.trade.common.constants.MQEnum;
+import com.lujiahao.trade.common.exception.RocketMqException;
 import com.lujiahao.trade.middleware.rocketmq.TradeProducer;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +18,9 @@ public class TestProducer extends BaseTestCase {
     private TradeProducer producer;
 
     @Test
-    public void testProducer() {
-        producer.send("lujiahao");
+    public void testProducer() throws RocketMqException {
+        SendResult sendResult = producer.sendMessage(MQEnum.TopicEnum.ORDER_CANCEL, "lujiahao", "lujiahao");
+        System.out.println(sendResult);
+//        producer.send("lujiahao");
     }
 }

@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lujiahao</groupId>
-    <artifactId>trade-order</artifactId>
+    <artifactId>trade-middleware</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
@@ -21,21 +21,17 @@
     </properties>
 
     <dependencies>
-        <!--<dependency>-->
-            <!--<groupId>com.lujiahao</groupId>-->
-            <!--<artifactId>trade-common</artifactId>-->
-            <!--<version>0.0.1</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>com.lujiahao</groupId>
-            <artifactId>trade-dao</artifactId>
+            <artifactId>trade-common</artifactId>
             <version>0.0.1</version>
         </dependency>
+        
         <dependency>
-            <groupId>com.lujiahao</groupId>
-            <artifactId>trade-middleware</artifactId>
-            <version>0.0.1</version>
+            <groupId>com.alibaba.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -43,6 +39,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <classifier>exec</classifier>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -23,6 +23,11 @@
     <dependencies>
         <dependency>
             <groupId>com.lujiahao</groupId>
+            <artifactId>trade-common</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lujiahao</groupId>
             <artifactId>trade-dao</artifactId>
             <version>0.0.1</version>
         </dependency>

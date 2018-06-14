@@ -1,4 +1,4 @@
-package com.lujiahao.trade.user.config;
+package com.lujiahao.trade.order.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;

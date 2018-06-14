@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lujiahao.trade.dao.mapper.TradeOrderMapper" >
   <resultMap id="BaseResultMap" type="com.lujiahao.trade.dao.entity.TradeOrder" >
-    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <id column="order_id" property="orderId" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="order_status" property="orderStatus" jdbcType="CHAR" />
     <result column="pay_status" property="payStatus" jdbcType="CHAR" />
@@ -101,6 +101,16 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from trade_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from trade_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </delete>
   <delete id="deleteByExample" parameterType="com.lujiahao.trade.dao.entity.TradeOrderExample" >
     delete from trade_order
     <if test="_parameter != null" >
@@ -108,27 +118,30 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.lujiahao.trade.dao.entity.TradeOrder" >
-    insert into trade_order (order_id, user_id, order_status, 
-      pay_status, shipping_status, address, 
-      consignee, goods_id, goods_number, 
-      goods_price, goods_amount, shipping_fee, 
-      order_amount, coupon_id, coupon_paid, 
-      money_paid, pay_amount, add_time, 
-      confirm_time, pay_time)
-    values (#{orderId,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{orderStatus,jdbcType=CHAR}, 
-      #{payStatus,jdbcType=CHAR}, #{shippingStatus,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}, 
-      #{consignee,jdbcType=VARCHAR}, #{goodsId,jdbcType=INTEGER}, #{goodsNumber,jdbcType=INTEGER}, 
-      #{goodsPrice,jdbcType=DECIMAL}, #{goodsAmount,jdbcType=DECIMAL}, #{shippingFee,jdbcType=DECIMAL}, 
-      #{orderAmount,jdbcType=DECIMAL}, #{couponId,jdbcType=VARCHAR}, #{couponPaid,jdbcType=DECIMAL}, 
-      #{moneyPaid,jdbcType=DECIMAL}, #{payAmount,jdbcType=DECIMAL}, #{addTime,jdbcType=TIMESTAMP}, 
-      #{confirmTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP})
+    <selectKey resultType="java.lang.String" keyProperty="orderId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into trade_order (user_id, order_status, pay_status, 
+      shipping_status, address, consignee, 
+      goods_id, goods_number, goods_price, 
+      goods_amount, shipping_fee, order_amount, 
+      coupon_id, coupon_paid, money_paid, 
+      pay_amount, add_time, confirm_time, 
+      pay_time)
+    values (#{userId,jdbcType=INTEGER}, #{orderStatus,jdbcType=CHAR}, #{payStatus,jdbcType=CHAR}, 
+      #{shippingStatus,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}, #{consignee,jdbcType=VARCHAR}, 
+      #{goodsId,jdbcType=INTEGER}, #{goodsNumber,jdbcType=INTEGER}, #{goodsPrice,jdbcType=DECIMAL}, 
+      #{goodsAmount,jdbcType=DECIMAL}, #{shippingFee,jdbcType=DECIMAL}, #{orderAmount,jdbcType=DECIMAL}, 
+      #{couponId,jdbcType=VARCHAR}, #{couponPaid,jdbcType=DECIMAL}, #{moneyPaid,jdbcType=DECIMAL}, 
+      #{payAmount,jdbcType=DECIMAL}, #{addTime,jdbcType=TIMESTAMP}, #{confirmTime,jdbcType=TIMESTAMP}, 
+      #{payTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lujiahao.trade.dao.entity.TradeOrder" >
+    <selectKey resultType="java.lang.String" keyProperty="orderId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into trade_order
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="orderId != null" >
-        order_id,
-      </if>
       <if test="userId != null" >
         user_id,
       </if>
@@ -188,9 +201,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="orderId != null" >
-        #{orderId,jdbcType=VARCHAR},
-      </if>
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
@@ -349,5 +359,91 @@
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lujiahao.trade.dao.entity.TradeOrder" >
+    update trade_order
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=CHAR},
+      </if>
+      <if test="payStatus != null" >
+        pay_status = #{payStatus,jdbcType=CHAR},
+      </if>
+      <if test="shippingStatus != null" >
+        shipping_status = #{shippingStatus,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="consignee != null" >
+        consignee = #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number = #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsAmount != null" >
+        goods_amount = #{goodsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="shippingFee != null" >
+        shipping_fee = #{shippingFee,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmount != null" >
+        order_amount = #{orderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="couponId != null" >
+        coupon_id = #{couponId,jdbcType=VARCHAR},
+      </if>
+      <if test="couponPaid != null" >
+        coupon_paid = #{couponPaid,jdbcType=DECIMAL},
+      </if>
+      <if test="moneyPaid != null" >
+        money_paid = #{moneyPaid,jdbcType=DECIMAL},
+      </if>
+      <if test="payAmount != null" >
+        pay_amount = #{payAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmTime != null" >
+        confirm_time = #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lujiahao.trade.dao.entity.TradeOrder" >
+    update trade_order
+    set user_id = #{userId,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=CHAR},
+      pay_status = #{payStatus,jdbcType=CHAR},
+      shipping_status = #{shippingStatus,jdbcType=CHAR},
+      address = #{address,jdbcType=VARCHAR},
+      consignee = #{consignee,jdbcType=VARCHAR},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      goods_number = #{goodsNumber,jdbcType=INTEGER},
+      goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      goods_amount = #{goodsAmount,jdbcType=DECIMAL},
+      shipping_fee = #{shippingFee,jdbcType=DECIMAL},
+      order_amount = #{orderAmount,jdbcType=DECIMAL},
+      coupon_id = #{couponId,jdbcType=VARCHAR},
+      coupon_paid = #{couponPaid,jdbcType=DECIMAL},
+      money_paid = #{moneyPaid,jdbcType=DECIMAL},
+      pay_amount = #{payAmount,jdbcType=DECIMAL},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      confirm_time = #{confirmTime,jdbcType=TIMESTAMP},
+      pay_time = #{payTime,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=VARCHAR}
   </update>
 </mapper>

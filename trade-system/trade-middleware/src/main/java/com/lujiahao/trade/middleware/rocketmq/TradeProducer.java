@@ -2,6 +2,7 @@ package com.lujiahao.trade.middleware.rocketmq;
 
 import com.alibaba.rocketmq.client.producer.SendResult;
 import com.alibaba.rocketmq.common.message.Message;
+import com.lujiahao.trade.common.constants.MQEnum;
 import com.lujiahao.trade.middleware.rocketmq.base.AbstractRocketMqProducer;
 import com.lujiahao.trade.common.exception.RocketMqException;
 import com.lujiahao.trade.middleware.rocketmq.base.ProducerProperties;
@@ -27,6 +28,10 @@ public class TradeProducer extends AbstractRocketMqProducer {
         } catch (Exception e) {
             throw new RocketMqException(e);
         }
+    }
+
+    public SendResult sendMessage(MQEnum.TopicEnum topicEnum, String keys, String messageText) throws RocketMqException {
+        return sendMessage(topicEnum.getTopic(), topicEnum.getTag(), keys, messageText);
     }
 
     @Override

@@ -48,23 +48,32 @@
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="trade_goods" enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true" >
+        <table tableName="trade_goods" enableCountByExample="true" enableUpdateByExample="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByExample="true" enableDeleteByPrimaryKey="true" enableSelectByExample="true" enableSelectByPrimaryKey="true"
+               selectByExampleQueryId="true" >
             <generatedKey column="goods_id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="trade_coupon" enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>
-        <table tableName="trade_user_money_log" enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>
-        <table tableName="trade_goods_number_log" enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>
-        <table tableName="trade_user" enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true" >
+        <table tableName="trade_coupon" enableCountByExample="true" enableUpdateByExample="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByExample="true" enableDeleteByPrimaryKey="true" enableSelectByExample="true" enableSelectByPrimaryKey="true"
+               selectByExampleQueryId="true" />
+        <table tableName="trade_user_money_log" enableCountByExample="true" enableUpdateByExample="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByExample="true" enableDeleteByPrimaryKey="true" enableSelectByExample="true" enableSelectByPrimaryKey="true"
+               selectByExampleQueryId="true" />
+        <table tableName="trade_goods_number_log" enableCountByExample="true" enableUpdateByExample="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByExample="true" enableDeleteByPrimaryKey="true" enableSelectByExample="true" enableSelectByPrimaryKey="true"
+               selectByExampleQueryId="true" />
+        <table tableName="trade_user" enableCountByExample="true" enableUpdateByExample="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByExample="true" enableDeleteByPrimaryKey="true" enableSelectByExample="true" enableSelectByPrimaryKey="true"
+               selectByExampleQueryId="true" >
             <generatedKey column="user_id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="trade_order" enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>
-        <table tableName="trade_pay" enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>
+        <table tableName="trade_order" enableCountByExample="true" enableUpdateByExample="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByExample="true" enableDeleteByPrimaryKey="true" enableSelectByExample="true" enableSelectByPrimaryKey="true"
+               selectByExampleQueryId="true" >
+            <generatedKey column="order_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="trade_pay" enableCountByExample="true" enableUpdateByExample="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByExample="true" enableDeleteByPrimaryKey="true" enableSelectByExample="true" enableSelectByPrimaryKey="true"
+               selectByExampleQueryId="true" />
     </context>
 </generatorConfiguration>

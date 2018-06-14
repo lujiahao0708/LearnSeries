@@ -1,6 +1,8 @@
 package com.lujiahao.trade.user.api;
 
 import com.lujiahao.trade.common.api.IUserApi;
+import com.lujiahao.trade.common.protocol.user.ChangeUserMoneyReq;
+import com.lujiahao.trade.common.protocol.user.ChangeUserMoneyRes;
 import com.lujiahao.trade.common.protocol.user.QueryUserReq;
 import com.lujiahao.trade.common.protocol.user.QueryUserRes;
 import com.lujiahao.trade.user.service.IUserService;
@@ -21,5 +23,10 @@ public class UserApiImpl implements IUserApi {
     @GetMapping(value = "/queryUserById")
     public QueryUserRes queryUserById(QueryUserReq queryUserReq) {
         return userService.queryUserById(queryUserReq);
+    }
+
+    @Override
+    public ChangeUserMoneyRes changeUserMoney(ChangeUserMoneyReq changeUserMoneyReq) {
+        return null;
     }
 }

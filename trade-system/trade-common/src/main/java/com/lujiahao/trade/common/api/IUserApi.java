@@ -1,5 +1,7 @@
 package com.lujiahao.trade.common.api;
 
+import com.lujiahao.trade.common.protocol.user.ChangeUserMoneyReq;
+import com.lujiahao.trade.common.protocol.user.ChangeUserMoneyRes;
 import com.lujiahao.trade.common.protocol.user.QueryUserRes;
 import com.lujiahao.trade.common.protocol.user.QueryUserReq;
 
@@ -10,4 +12,6 @@ import com.lujiahao.trade.common.protocol.user.QueryUserReq;
 public interface IUserApi {
 
     QueryUserRes queryUserById(QueryUserReq queryUserReq);
+
+    ChangeUserMoneyRes changeUserMoney(ChangeUserMoneyReq changeUserMoneyReq);
 }

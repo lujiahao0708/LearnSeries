@@ -2,8 +2,6 @@ package com.lujiahao.trade.user;
 
 import com.lujiahao.trade.common.protocol.user.QueryUserReq;
 import com.lujiahao.trade.common.protocol.user.QueryUserRes;
-import com.lujiahao.trade.dao.entity.TradeUser;
-import com.lujiahao.trade.dao.mapper.TradeUserMapper;
 import com.lujiahao.trade.user.service.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,14 +18,8 @@ public class BaseTestCase {
 
     @Autowired
     private IUserService userService;
-//    @Autowired
-//    private TradeUserMapper userMapper;
     @Test
     public void test() {
-//        TradeUser tradeUser = userMapper.selectByPrimaryKey(1);
-//        System.out.println(tradeUser);
-//
-//
         QueryUserReq queryUserReq = new QueryUserReq();
         queryUserReq.setUserId(1);
         QueryUserRes queryUserRes = userService.queryUserById(queryUserReq);

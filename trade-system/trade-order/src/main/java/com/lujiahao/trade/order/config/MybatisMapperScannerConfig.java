@@ -1,4 +1,4 @@
-package com.lujiahao.trade.user.config;
+package com.lujiahao.trade.order.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
