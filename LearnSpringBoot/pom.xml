@@ -15,6 +15,7 @@
 		<module>springboot-redis-springsession</module>
 		<module>springboot-task</module>
 		<module>springboot-elastic-job</module>
+		<module>springboot-i18n</module>
 	</modules>
 
     <parent>
