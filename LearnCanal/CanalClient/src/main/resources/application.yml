@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: dev
+
+# canal\u914D\u7F6E
+canal_config:
+  host_name: 127.0.0.1
+  port: 11111
+  username: ""
+  password: ""
