@@ -2,7 +2,7 @@ FROM sssllc/centos7.2-jdk1.8
 
 ENV START_ENV dev
 
-MAINTAINER lujiahao@01zhuanche.com
+MAINTAINER lujiahao@gmail.com
 
 #mkdir code
 RUN mkdir -p /u01/springboot-elastic-job
