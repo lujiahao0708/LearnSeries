@@ -19,6 +19,11 @@ FROM apache/rocketmq-base:4.3.0
 
 EXPOSE 10909 10911
 
+ARG host_ip
+
+# Rocketmq version
+ENV HOST_IP ${host_ip}
+
 RUN echo 'namesrvAddr = ' ${HOST_IP} ':9876' >> ${ROCKETMQ_HOME}/conf/broker.conf
 RUN echo 'brokerIP1 = ' ${HOST_IP} >> ${ROCKETMQ_HOME}/conf/broker.conf
 
