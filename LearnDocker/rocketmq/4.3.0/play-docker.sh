@@ -1,11 +1,14 @@
 #!/bin/bash
 
+host_ip=`/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6 |grep broadcast | awk '{print $2}' | tr -d "addr:"`
+echo HostIP: $host_ip
+
 # Build base image
 docker build -t apache/rocketmq-base:4.3.0 --build-arg version=4.3.0 ./rocketmq-base
 
 # Build namesrv and broker
 docker build -t apache/rocketmq-namesrv:4.3.0 ./rocketmq-namesrv
-docker build -t apache/rocketmq-broker:4.3.0 ./rocketmq-broker --build-arg host_ip=111.231.199.76
+docker build -t apache/rocketmq-broker:4.3.0 ./rocketmq-broker --build-arg host_ip=$host_ip
 
 # Run namesrv and broker
 
