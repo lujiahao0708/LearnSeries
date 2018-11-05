@@ -1,6 +1,6 @@
 #!/bin/bash
 
-host_ip=`/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6 |grep broadcast | awk '{print $2}' | tr -d "addr:"`
+host_ip=`/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6 |grep broadcast |grep -v 172 | awk '{print $2}' | tr -d "addr:"`
 echo HostIP: $host_ip
 
 # Build base image
