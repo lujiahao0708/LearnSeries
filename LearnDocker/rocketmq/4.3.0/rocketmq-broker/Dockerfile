@@ -21,8 +21,8 @@ ENV HOST_IP ${host_ip}
 
 EXPOSE 10909 10911
 
-RUN echo 'namesrvAddr = ${HOST_IP}:9876' >> /opt/${ROCKETMQ_HOME}/conf/broker.conf
-RUN echo 'brokerIP1 = ${HOST_IP}' >> /opt/${ROCKETMQ_HOME}/conf/broker.conf
+RUN echo 'namesrvAddr = ${HOST_IP}:9876' >> ${ROCKETMQ_HOME}/conf/broker.conf
+RUN echo 'brokerIP1 = ${HOST_IP}' >> ${ROCKETMQ_HOME}/conf/broker.conf
 
 RUN mv ${ROCKETMQ_HOME}/bin/runbroker-customize.sh ${ROCKETMQ_HOME}/bin/runbroker.sh \
  && chmod +x ${ROCKETMQ_HOME}/bin/runbroker.sh \
