@@ -1,0 +1,30 @@
+# Elasticsearch
+elasticsearch:
+  cluster:
+    name: elasticsearch
+#  ip: 111.231.199.76
+#  ip: 10.19.60.134
+  ip: 127.0.0.1
+  port: 9300
+  pool: 5
+
+#rocketMq carFactOrder 配置
+rocket:
+  order:
+    namesrvAddr: 111.231.199.76:9876
+    groupName: dataGroup
+    topic: dataTopic
+    tag: '*'
+    batchMaxSize: 16
+
+# REDIS (RedisProperties)
+spring:
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 0
+    # Redis服务器地址
+    host: 111.231.199.76
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:
