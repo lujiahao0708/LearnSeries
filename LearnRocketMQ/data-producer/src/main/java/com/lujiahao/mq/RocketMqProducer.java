@@ -7,6 +7,8 @@ import org.apache.rocketmq.common.message.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 /**
  * producer
  * @author lujiahao
@@ -37,6 +39,14 @@ public class RocketMqProducer {
         }
     }
 
+    private static int hash(Object key) {
+        int h;
+        return key == null ? 0 : (h = key.hashCode()) ^ h >>> 16;
+    }
+
+    /**
+     * 消息单条发送
+     */
     public boolean sendMessage(String topic, String tag, String key, String value) {
         SendResult sendResult = null;
         try {
@@ -61,8 +71,23 @@ public class RocketMqProducer {
         }
     }
 
-    private static int hash(Object key) {
-        int h;
-        return key == null ? 0 : (h = key.hashCode()) ^ h >>> 16;
+    /**
+     * 消息批量发送
+     */
+    public boolean sendBatchMessage(List<Message> msgList) {
+        SendResult sendResult = null;
+        try {
+            sendResult = producer.send(msgList);
+            if (sendResult == null || sendResult.getSendStatus() != SendStatus.SEND_OK) {
+                logger.warn("[批量发送][发送mq失败][producer:{}][sendResult:{}]", producer, sendResult);
+                return false;
+            } else {
+                logger.info("[批量发送][发送mq成功][producer:{}][sendResult:{}]", producer, sendResult);
+                return true;
+            }
+        } catch (Throwable e) {
+            logger.error("[批量发送][发送mq异常][producer:{}][sendResult:{}]", producer, sendResult, e);
+            return false;
+        }
     }
 }

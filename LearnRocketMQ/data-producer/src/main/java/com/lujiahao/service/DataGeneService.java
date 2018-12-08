@@ -2,14 +2,14 @@ package com.lujiahao.service;
 
 import com.lujiahao.mq.RocketMqProducer;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.rocketmq.common.message.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
+import java.util.*;
 
 /**
  * 数据生成服务
@@ -26,9 +26,9 @@ public class DataGeneService {
     private volatile long count = 0;
 
     /**
-     * 发送数据
+     * 消息单条发送
      */
-    public void sendData() {
+    public void sendSingleMsg() {
         try {
             while (true) {
                 String topic = "dataTopic";
@@ -40,6 +40,32 @@ public class DataGeneService {
                 dataProducer.sendMessage(topic, tag, orderNo, json);
                 ++count;
                 LOGGER.info("发送count:{}", count);
+                Thread.sleep(new Random().nextInt(500));
+            }
+        } catch (Exception e) {
+            LOGGER.error("发送数据异常", e);
+        }
+    }
+
+    /**
+     * 消息批量发送
+     */
+    public void sendBatchMsg() {
+        try {
+            while (true) {
+                List<Message> msgCollection = new ArrayList<>();
+                for (int i = 0; i < 100; i++) {
+                    String topic = "dataTopic";
+                    int[] statusArr = {10, 13, 15, 20, 25, 30, 40, 44, 45, 50 , 60};
+                    int status = statusArr[new Random().nextInt(11)];
+                    String tag = "1_" + status;
+                    String orderNo = "P" + generateOrderNo();
+                    String json = attachJson(orderNo, status);
+                    Message msg = new Message(topic, tag, orderNo, json.getBytes());
+                    msgCollection.add(msg);
+                }
+                dataProducer.sendBatchMessage(msgCollection);
+                LOGGER.info("发送count:{}", msgCollection.size());
                 Thread.sleep(new Random().nextInt(500));
             }
         } catch (Exception e) {

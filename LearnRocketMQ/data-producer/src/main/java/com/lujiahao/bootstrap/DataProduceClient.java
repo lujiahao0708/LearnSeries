@@ -1,15 +1,13 @@
 package com.lujiahao.bootstrap;
 
-import com.lujiahao.mq.RocketMqProducer;
 import com.lujiahao.service.DataGeneService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
-
 /**
+ * 消息发送客户端
  * @author lujiahao
  * @date 2018-11-03 15:03
  */
@@ -26,7 +24,7 @@ public class DataProduceClient implements LifeCycle {
 
     @Override
     public void start() {
-        thread = new Thread(() -> dataGeneService.sendData());
+        thread = new Thread(() -> dataGeneService.sendSingleMsg());
         thread.setUncaughtExceptionHandler(handler);
         thread.start();
         running = true;
