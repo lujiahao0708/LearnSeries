@@ -6,7 +6,6 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @author yangnan
  * 订单数据
  */
 @Data

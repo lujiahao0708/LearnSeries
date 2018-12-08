@@ -1,9 +1,16 @@
 #rocketMq \u914D\u7F6E
 rocket:
+  # 单条消费
   order:
-#    namesrvAddr: 127.0.0.1:9876
     namesrvAddr: 111.231.199.76:9876
     groupName: dataGroup
     topic: dataTopic
     tag: '*'
     batchMaxSize: 16
+  # 批量消费
+  order-batch:
+    namesrvAddr: 111.231.199.76:9876
+    groupName: dataGroup
+    topic: dataTopic
+    tag: '*'
+    batchMaxSize: 32

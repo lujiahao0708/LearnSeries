@@ -14,14 +14,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
- * rocketmq 消费者
+ * rocketmq 消费者 批量消费
  * @author lujiahao
- * @date 2018/11/1
+ * @date 2018-12-06
  */
-public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle {
+public abstract class AbstractRocketMqBatchConsumer extends AbstractLifeCycle {
 
     /**
      * mq相关配置
@@ -54,64 +55,49 @@ public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle {
     public void listen() {
         try {
             consumer = new DefaultMQPushConsumer(mqProperty.getGroupName());
-            // MQ地址
             consumer.setNamesrvAddr(mqProperty.getNamesrvAddr());
             consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
-            String instanceName = mqProperty.getInstanceName();
-            if (StringUtils.isBlank(instanceName)) {
-                instanceName = String.valueOf(System.currentTimeMillis());
-            }
+            String instanceName = StringUtils.isBlank(mqProperty.getInstanceName()) ? String.valueOf(System.currentTimeMillis()) : mqProperty.getInstanceName();
             consumer.setInstanceName(instanceName);
-            int batchSize = mqProperty.getBatchMaxSize();
-            if (batchSize <= 0) {
-                batchSize = 16;
-            }
-            consumer.setConsumeMessageBatchMaxSize(batchSize);
+            int batchMaxSize = mqProperty.getBatchMaxSize() <= 0 ? 16 : mqProperty.getBatchMaxSize();
+            consumer.setConsumeMessageBatchMaxSize(batchMaxSize);
             consumer.subscribe(mqProperty.getTopic(), mqProperty.getTag());
             // 注册监听
             consumer.registerMessageListener((MessageListenerOrderly) (msg, context) -> {
-                for (int i = 0; i < msg.size(); i++) {
-                    MessageExt msgExt = msg.get(i);
-                    String msgId = msgExt.getMsgId();
-                    MDC.put(TraceConstant.TRACE_KEY, UUID.randomUUID().toString().replace("-", ""));
-                    String msgBody = new String(msgExt.getBody());
-                    logger.debug("msgSize={}, msgId={}, msgBody={}", msg.size(), msgId, msgBody);
-                    try {
-                        boolean isSuccess = handleMessage(msgBody, msgId);
-                        if (!isSuccess) {
-                            logger.warn("处理消息失败 mqProperty:{} msgExt:{}", mqProperty, msgExt);
-                            return ConsumeOrderlyStatus.SUSPEND_CURRENT_QUEUE_A_MOMENT;
-                        }
-                    } catch (Exception e) {
-                        logger.error("mqProperty:{} msgExt:{}", mqProperty, msgExt, e);
-                        return ConsumeOrderlyStatus.SUSPEND_CURRENT_QUEUE_A_MOMENT;
-                    } finally {
-                        MDC.remove(TraceConstant.TRACE_KEY);
+                MDC.put(TraceConstant.TRACE_KEY, UUID.randomUUID().toString().replace("-", ""));
+                try {
+                    if (msg == null || msg.size() <= 0) {
+                        logger.warn("[BatchConsumer]消息集合为null或size小于等于0 mqProperty:{}", mqProperty);
+                        return ConsumeOrderlyStatus.SUCCESS;
                     }
+                    boolean isSuccess = handleBatchMessage(msg);
+                    if (!isSuccess) {
+                        logger.warn("[BatchConsumer]处理消息失败 mqProperty:{} msgSize:{}", mqProperty, msg.size());
+                        return ConsumeOrderlyStatus.SUSPEND_CURRENT_QUEUE_A_MOMENT;
+                    }
+                } catch (Exception e) {
+                    logger.error("[BatchConsumer]mqProperty:{} msgSize:{}", mqProperty, msg.size(), e);
+                    return ConsumeOrderlyStatus.SUSPEND_CURRENT_QUEUE_A_MOMENT;
+                } finally {
+                    MDC.remove(TraceConstant.TRACE_KEY);
                 }
                 return ConsumeOrderlyStatus.SUCCESS;
             });
             consumer.start();
-            logger.info("consumer配置:{}", mqProperty);
+            logger.info("[BatchConsumer][consumer配置:{}]", mqProperty);
             isStart = true;
         } catch (MQClientException e) {
-            logger.error("mqProperty:{}", mqProperty, e);
+            logger.error("[BatchConsumer][mqProperty:{}]", mqProperty, e);
         }
     }
 
     /**
      * 处理消息
-     *
-     * @param message
-     * @param msgId
-     * @return
      */
-    public abstract boolean handleMessage(String message, String msgId);
+    public abstract boolean handleBatchMessage(List<MessageExt> batchMsg);
 
     /**
      * 获取配信息
-     *
-     * @return
      */
     public abstract BaseRocketMqProperty getMqProperty();
 }

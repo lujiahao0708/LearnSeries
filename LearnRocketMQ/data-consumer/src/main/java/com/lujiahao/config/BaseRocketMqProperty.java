@@ -1,4 +1,4 @@
-package com.lujiahao.mq;
+package com.lujiahao.config;
 
 import lombok.Data;
 

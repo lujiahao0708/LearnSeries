@@ -1,16 +1,11 @@
-package com.lujiahao.mq;
+package com.lujiahao.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-/**
- *
- * @author lujiahao
- * @date 2018/11/3
- */
 @Configuration
-@ConfigurationProperties(prefix = "rocket.order")
+@ConfigurationProperties(prefix = "rocket.order-batch")
 @Data
-public class OrderConfig extends BaseRocketMqProperty {
+public class OrderBatchConfig extends BaseRocketMqProperty {
 }
