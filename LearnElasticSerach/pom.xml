@@ -6,7 +6,12 @@
     <groupId>com.lujiahao</groupId>
     <artifactId>learnelasticserach</artifactId>
     <version>0.0.1</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>batchinsert</module>
+        <module>es_company</module>
+    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

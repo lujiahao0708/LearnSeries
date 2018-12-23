@@ -1,0 +1,8 @@
+# ES
+spring:
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+      cluster-name: docker-cluster
+      cluster-nodes: 111.231.199.76:9300
