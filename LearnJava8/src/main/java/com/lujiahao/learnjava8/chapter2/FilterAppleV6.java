@@ -1,9 +1,10 @@
 package com.lujiahao.learnjava8.chapter2;
 
+import com.lujiahao.learnjava8.DataUtil;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.*;
 
 /**
  * List类型抽象话
