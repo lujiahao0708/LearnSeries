@@ -4,6 +4,7 @@ import com.lujiahao.learnjava8.chapter2.Apple;
 import com.lujiahao.learnjava8.chapter4.Dish;
 import com.lujiahao.learnjava8.chapter5.Trader;
 import com.lujiahao.learnjava8.chapter5.Transaction;
+import com.lujiahao.learnjava8.chapter8.templateMethod.Customer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,5 +52,9 @@ public class DataUtil {
                 new Transaction(alan, 2012, 950)
         );
         return transactions;
+    }
+
+    public static Customer getCustomerWithId(int id) {
+        return new Customer(id, "name" + id);
     }
 }
