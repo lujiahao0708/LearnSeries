@@ -1,5 +1,7 @@
 package com.lujiahao.learnjava8;
 
+import com.lujiahao.learnjava8.chapter11.Shop;
+import com.lujiahao.learnjava8.chapter11.chapter11_4.Shop11_4;
 import com.lujiahao.learnjava8.chapter2.Apple;
 import com.lujiahao.learnjava8.chapter4.Dish;
 import com.lujiahao.learnjava8.chapter5.Trader;
@@ -56,5 +58,29 @@ public class DataUtil {
 
     public static Customer getCustomerWithId(int id) {
         return new Customer(id, "name" + id);
+    }
+
+    public static List<Shop> getShops() {
+        return Arrays.asList(
+                new Shop("BestPrice"),
+                new Shop("LetsSaveBig"),
+                new Shop("LetsSaveBig"),
+                new Shop("MyFavoriteShop"),
+                new Shop("MyFavoriteShop"),
+                new Shop("MyFavoriteShop"),
+                new Shop("MyFavoriteShop"),
+                new Shop("MyFavoriteShop"),
+                new Shop("BuyItAll")
+        );
+    }
+
+    public static List<Shop11_4> getShop11_4() {
+        return Arrays.asList(
+                new Shop11_4("BestPrice"),
+                new Shop11_4("LetsSaveBig"),
+                new Shop11_4("LetsSaveBig"),
+                new Shop11_4("MyFavoriteShop"),
+                new Shop11_4("BuyItAll")
+        );
     }
 }
