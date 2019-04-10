@@ -1,0 +1,11 @@
+
+
+# ES
+spring:
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+      cluster-name: docker-cluster
+      cluster-nodes: lujiahao.ml:9300
+
