@@ -1,4 +1,4 @@
-package com.lujiahao.nettyhello;
+package com.lujiahao.netty.demo01_hellonetty;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -10,7 +10,7 @@ import io.netty.handler.codec.http.HttpServerCodec;
  * @author lujiahao
  * @date 2019-05-05 15:53
  */
-public class HelloServerInitializer extends ChannelInitializer<SocketChannel> {
+public class HelloNettyInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel channel) throws Exception {
@@ -23,6 +23,6 @@ public class HelloServerInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast("HttpServerCodec", new HttpServerCodec());
 
         // 添加自定义的助手类,返回文案:Hello Netty! 你好 Netty!
-        pipeline.addLast("customerHandler", new CustomerHandler());
+        pipeline.addLast("helloNettyHandler", new HelloNettyHandler());
     }
 }

@@ -1,4 +1,4 @@
-package com.lujiahao.nettyhello;
+package com.lujiahao.netty.demo01_hellonetty;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -10,7 +10,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  * @author lujiahao
  * @date 2019-05-05 15:42
  */
-public class HelloServer {
+public class HelloNettyServer {
     public static void main(String[] args) throws Exception {
         // 定义一对线程组
         // 主线程组,用于接受客户端的连接,但是不做任何处理
@@ -23,7 +23,7 @@ public class HelloServer {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup, workerGroup)       // 设置主从线程组
                     .channel(NioServerSocketChannel.class)      // 设置nio的双向通道
-                    .childHandler(new HelloServerInitializer());// 子处理器,用于处理workderGroup的任务
+                    .childHandler(new HelloNettyInitializer());// 子处理器,用于处理workderGroup的任务
 
             // 启动server,设置8088位端口号,启动方式为同步
             ChannelFuture channelFuture = serverBootstrap.bind(8088).sync();

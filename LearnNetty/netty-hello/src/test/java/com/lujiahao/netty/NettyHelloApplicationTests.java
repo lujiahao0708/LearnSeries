@@ -1,4 +1,4 @@
-package com.lujiahao.nettyhello;
+package com.lujiahao.netty;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
