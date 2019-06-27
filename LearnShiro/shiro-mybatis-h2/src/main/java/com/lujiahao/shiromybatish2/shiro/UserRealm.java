@@ -1,7 +1,7 @@
-package com.lujiahao.springbootshiro.shiro;
+package com.lujiahao.shiromybatish2.shiro;
 
-import com.lujiahao.springbootshiro.domain.User;
-import com.lujiahao.springbootshiro.service.UserService;
+import com.lujiahao.shiromybatish2.domain.User;
+import com.lujiahao.shiromybatish2.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

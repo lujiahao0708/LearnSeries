@@ -1,7 +1,7 @@
-package com.lujiahao.learnshiro.chapter6.service;
+package com.lujiahao.shirofirst.chapter6.service;
 
-import com.lujiahao.learnshiro.chapter6.dao.RoleDao;
-import com.lujiahao.learnshiro.chapter6.entity.Role;
+import com.lujiahao.shirofirst.chapter6.dao.RoleDao;
+import com.lujiahao.shirofirst.chapter6.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

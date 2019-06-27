@@ -1,7 +1,7 @@
-package com.lujiahao.springbootshiro.service;
+package com.lujiahao.shiromybatish2.service;
 
-import com.lujiahao.springbootshiro.domain.User;
-import com.lujiahao.springbootshiro.mapper.UserMapper;
+import com.lujiahao.shiromybatish2.domain.User;
+import com.lujiahao.shiromybatish2.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

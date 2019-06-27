@@ -1,6 +1,6 @@
-package com.lujiahao.springbootshiro.mapper;
+package com.lujiahao.shiromybatish2.mapper;
 
-import com.lujiahao.springbootshiro.domain.User;
+import com.lujiahao.shiromybatish2.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

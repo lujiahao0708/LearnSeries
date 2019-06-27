@@ -1,4 +1,4 @@
-package com.lujiahao.springbootshiro.domain;
+package com.lujiahao.shiromybatish2.domain;
 
 import lombok.Data;
 

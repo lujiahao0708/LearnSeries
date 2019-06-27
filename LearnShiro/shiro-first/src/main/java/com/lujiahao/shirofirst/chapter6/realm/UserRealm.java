@@ -1,7 +1,7 @@
-package com.lujiahao.learnshiro.chapter6.realm;
+package com.lujiahao.shirofirst.chapter6.realm;
 
-import com.lujiahao.learnshiro.chapter6.entity.User;
-import com.lujiahao.learnshiro.chapter6.service.UserService;
+import com.lujiahao.shirofirst.chapter6.entity.User;
+import com.lujiahao.shirofirst.chapter6.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;

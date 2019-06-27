@@ -1,7 +1,7 @@
-package com.lujiahao.learnshiro.chapter6.service;
+package com.lujiahao.shirofirst.chapter6.service;
 
 
-import com.lujiahao.learnshiro.chapter6.entity.Role;
+import com.lujiahao.shirofirst.chapter6.entity.Role;
 
 /**
  * @author lujiahao

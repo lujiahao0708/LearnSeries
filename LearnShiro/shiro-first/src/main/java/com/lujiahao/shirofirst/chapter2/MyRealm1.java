@@ -1,4 +1,4 @@
-package com.lujiahao.learnshiro.chapter2;
+package com.lujiahao.shirofirst.chapter2;
 
 import org.apache.shiro.authc.*;
 import org.apache.shiro.realm.Realm;

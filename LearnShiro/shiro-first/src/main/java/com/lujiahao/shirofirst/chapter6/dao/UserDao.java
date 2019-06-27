@@ -1,6 +1,7 @@
-package com.lujiahao.learnshiro.chapter6.dao;
+package com.lujiahao.shirofirst.chapter6.dao;
 
-import com.lujiahao.learnshiro.chapter6.entity.User;
+
+import com.lujiahao.shirofirst.chapter6.entity.User;
 
 import java.util.Set;
 

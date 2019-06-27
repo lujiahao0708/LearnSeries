@@ -1,4 +1,4 @@
-package com.lujiahao.springbootshiro.controller;
+package com.lujiahao.shiromybatish2.controller;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;

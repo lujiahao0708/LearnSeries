@@ -1,7 +1,7 @@
-package com.lujiahao.learnshiro.chapter6.dao;
+package com.lujiahao.shirofirst.chapter6.dao;
 
-import com.lujiahao.learnshiro.chapter6.JdbcTemplateUtils;
-import com.lujiahao.learnshiro.chapter6.entity.Permission;
+import com.lujiahao.shirofirst.chapter6.JdbcTemplateUtils;
+import com.lujiahao.shirofirst.chapter6.entity.Permission;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;

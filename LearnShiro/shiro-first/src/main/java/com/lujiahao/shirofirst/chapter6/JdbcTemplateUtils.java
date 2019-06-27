@@ -1,4 +1,4 @@
-package com.lujiahao.learnshiro.chapter6;
+package com.lujiahao.shirofirst.chapter6;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;

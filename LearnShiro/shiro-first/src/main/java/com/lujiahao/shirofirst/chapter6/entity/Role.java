@@ -1,4 +1,4 @@
-package com.lujiahao.learnshiro.chapter6.entity;
+package com.lujiahao.shirofirst.chapter6.entity;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.lujiahao.springbootshiro.shiro;
+package com.lujiahao.shiromybatish2.shiro;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
