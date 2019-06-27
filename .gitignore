@@ -27,3 +27,5 @@ nbdist/
 */.DS_Store
 /log/
 /*/*/logs/
+*.hprof
+/*/out
