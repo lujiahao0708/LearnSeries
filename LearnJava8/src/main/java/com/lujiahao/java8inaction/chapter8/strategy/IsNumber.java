@@ -1,0 +1,13 @@
+package com.lujiahao.java8inaction.chapter8.strategy;
+
+/**
+ * @author lujiahao
+ * @date 2019-03-18 16:43
+ */
+public class IsNumber implements ValidationStrategy {
+
+    @Override
+    public boolean execute(String s) {
+        return s.matches("\\d+");
+    }
+}

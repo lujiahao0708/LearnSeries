@@ -1,0 +1,14 @@
+version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkinsci/blueocean
+    restart: always
+    privileged: true
+    ports:
+      - "49003:8080"
+      - "50000:50000"
+    volumes:
+      - /root/docker-data/jenkins:/var/jenkins_home
+      #environment:
+      #- JAVA_OPTS="-Xms256m -Xmx512m -XX:MaxNewSize=256m"
