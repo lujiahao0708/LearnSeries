@@ -19,3 +19,21 @@ spring:
       initial-size: 5
       max-total: 5
       max-wait-millis: 200
+
+eureka:
+  client:
+    # 客户端注册进eureka服务列表内
+    service-url:
+       defaultZone: http://localhost:7001/eureka
+  instance:
+    # 自定义服务名称信息
+    instance-id: microservicecloud-dept8001
+    # 访问路径可以显示IP地址
+    prefer-ip-address: true
+
+# 微服务信息描述
+info:
+  app.name: atguigu-microservicecloud
+  company.name: www.atguigu.com
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
