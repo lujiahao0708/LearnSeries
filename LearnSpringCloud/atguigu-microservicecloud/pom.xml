@@ -18,6 +18,7 @@
         <module>microservicecloud-eureka-7001</module>
         <module>microservicecloud-eureka-7002</module>
         <module>microservicecloud-eureka-7003</module>
+        <module>microservicecloud-provider-dept-hystrix-8001</module>
     </modules>
 
     <properties>
