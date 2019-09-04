@@ -1,6 +1,6 @@
-package com.imooc.ad.index.creative;
+package com.hellodev.index.creative;
 
-import com.imooc.ad.index.IndexAware;
+import com.hellodev.index.IndexAware;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
@@ -12,9 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Created by Qinyi.
- */
 @Slf4j
 @Component
 public class CreativeIndex implements IndexAware<Long, CreativeObject> {

@@ -1,13 +1,10 @@
-package com.imooc.ad.index.adunit;
+package com.hellodev.index.adunit;
 
-import com.imooc.ad.index.adplan.AdPlanObject;
+import com.hellodev.index.adplan.AdPlanObject;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Created by Qinyi.
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

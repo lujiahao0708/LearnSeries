@@ -1,7 +1,7 @@
-package com.imooc.ad.index.keyword;
+package com.hellodev.index.keyword;
 
-import com.imooc.ad.index.IndexAware;
-import com.imooc.ad.utils.CommonUtils;
+import com.hellodev.index.IndexAware;
+import com.hellodev.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
@@ -14,9 +14,6 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 
-/**
- * Created by Qinyi.
- */
 @Slf4j
 @Component
 public class UnitKeywordIndex implements IndexAware<String, Set<Long>> {

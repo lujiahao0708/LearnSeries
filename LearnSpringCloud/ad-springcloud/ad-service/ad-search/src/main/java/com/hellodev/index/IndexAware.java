@@ -1,8 +1,5 @@
-package com.imooc.ad.index;
+package com.hellodev.index;
 
-/**
- * Created by Qinyi.
- */
 public interface IndexAware<K, V> {
 
     V get(K key);

@@ -1,4 +1,4 @@
-package com.imooc.ad.index.adplan;
+package com.hellodev.index.adplan;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,9 +6,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-/**
- * Created by Qinyi.
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

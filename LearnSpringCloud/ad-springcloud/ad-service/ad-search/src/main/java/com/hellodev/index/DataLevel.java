@@ -1,10 +1,7 @@
-package com.imooc.ad.index;
+package com.hellodev.index;
 
 import lombok.Getter;
 
-/**
- * Created by Qinyi.
- */
 @Getter
 public enum DataLevel {
 

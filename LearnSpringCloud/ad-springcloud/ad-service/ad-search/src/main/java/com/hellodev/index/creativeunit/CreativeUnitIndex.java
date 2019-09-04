@@ -1,7 +1,7 @@
-package com.imooc.ad.index.creativeunit;
+package com.hellodev.index.creativeunit;
 
-import com.imooc.ad.index.IndexAware;
-import com.imooc.ad.index.adunit.AdUnitObject;
+import com.hellodev.index.IndexAware;
+import com.hellodev.index.adunit.AdUnitObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
@@ -14,13 +14,9 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 
-/**
- * Created by Qinyi.
- */
 @Slf4j
 @Component
-public class CreativeUnitIndex implements
-        IndexAware<String, CreativeUnitObject> {
+public class CreativeUnitIndex implements IndexAware<String, CreativeUnitObject> {
 
     // <adId-unitId, CreativeUnitObject>
     private static Map<String, CreativeUnitObject> objectMap;

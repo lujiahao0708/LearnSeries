@@ -1,16 +1,10 @@
-package com.imooc.ad.index;
+package com.hellodev.index;
 
 import com.alibaba.fastjson.JSON;
-import com.imooc.ad.dump.DConstant;
-import com.imooc.ad.dump.table.AdCreativeTable;
-import com.imooc.ad.dump.table.AdCreativeUnitTable;
-import com.imooc.ad.dump.table.AdPlanTable;
-import com.imooc.ad.dump.table.AdUnitDistrictTable;
-import com.imooc.ad.dump.table.AdUnitItTable;
-import com.imooc.ad.dump.table.AdUnitKeywordTable;
-import com.imooc.ad.dump.table.AdUnitTable;
-import com.imooc.ad.handler.AdLevelDataHandler;
-import com.imooc.ad.mysql.constant.OpType;
+import com.hellodev.dump.DConstant;
+import com.hellodev.dump.table.*;
+import com.hellodev.handler.AdLevelDataHandler;
+import com.hellodev.mysql.constant.OpType;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
@@ -22,9 +16,6 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by Qinyi.
- */
 @Component
 @DependsOn("dataTable")
 public class IndexFileLoader {

@@ -1,15 +1,12 @@
-package com.imooc.ad.index.adplan;
+package com.hellodev.index.adplan;
 
-import com.imooc.ad.index.IndexAware;
+import com.hellodev.index.IndexAware;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Created by Qinyi.
- */
 @Slf4j
 @Component
 public class AdPlanIndex implements IndexAware<Long, AdPlanObject> {

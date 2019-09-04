@@ -1,6 +1,6 @@
-package com.imooc.ad.index.adunit;
+package com.hellodev.index.adunit;
 
-import com.imooc.ad.index.IndexAware;
+import com.hellodev.index.IndexAware;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
@@ -14,9 +14,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Created by Qinyi.
- */
 @Slf4j
 @Component
 public class AdUnitIndex implements IndexAware<Long, AdUnitObject> {

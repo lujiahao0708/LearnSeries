@@ -1,12 +1,9 @@
-package com.imooc.ad.dump.table;
+package com.hellodev.dump.table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Created by Qinyi.
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

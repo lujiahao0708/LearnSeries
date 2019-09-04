@@ -1,8 +1,5 @@
-package com.imooc.ad.dump;
+package com.hellodev.dump;
 
-/**
- * Created by Qinyi.
- */
 public class DConstant {
 
     public static final String DATA_ROOT_DIR = "/Users/zhanghu05/imooc/mysql_data/";

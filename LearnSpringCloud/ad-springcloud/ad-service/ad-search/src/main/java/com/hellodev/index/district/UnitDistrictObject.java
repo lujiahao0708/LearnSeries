@@ -1,12 +1,9 @@
-package com.imooc.ad.index.district;
+package com.hellodev.index.district;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Created by Qinyi.
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -1,4 +1,4 @@
-package com.imooc.ad.search.vo.feature;
+package com.hellodev.vo.feature;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,9 +6,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-/**
- * Created by Qinyi.
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
