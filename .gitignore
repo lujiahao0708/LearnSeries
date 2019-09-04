@@ -29,6 +29,8 @@ nbdist/
 /*/*/logs/
 *.hprof
 /*/out
+/out/
 
 ### nodejs ###
 */node_modules
+*/*/node_modules
