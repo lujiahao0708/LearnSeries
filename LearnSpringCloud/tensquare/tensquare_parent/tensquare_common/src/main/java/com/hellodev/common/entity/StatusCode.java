@@ -1,4 +1,4 @@
-package com.hellodev.entity;
+package com.hellodev.common.entity;
 
 import lombok.Getter;
 

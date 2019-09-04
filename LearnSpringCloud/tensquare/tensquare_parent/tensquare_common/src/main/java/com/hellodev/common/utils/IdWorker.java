@@ -1,4 +1,4 @@
-package com.hellodev.utils;
+package com.hellodev.common.utils;
 
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;

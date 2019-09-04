@@ -2,7 +2,7 @@ package com.hellodev.base.service;
 
 import com.hellodev.base.dao.LabelDao;
 import com.hellodev.base.pojo.Label;
-import com.hellodev.utils.IdWorker;
+import com.hellodev.common.utils.IdWorker;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;

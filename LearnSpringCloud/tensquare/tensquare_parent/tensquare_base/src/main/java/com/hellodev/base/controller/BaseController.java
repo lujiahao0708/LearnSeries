@@ -1,8 +1,10 @@
 package com.hellodev.base.controller;
 
 import com.hellodev.base.pojo.Label;
-import com.hellodev.entity.Result;
-import com.hellodev.entity.StatusCode;
+import com.hellodev.base.service.LabelService;
+import com.hellodev.common.entity.Result;
+import com.hellodev.common.entity.StatusCode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -14,14 +16,25 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/label")
 public class BaseController {
 
+    @Autowired
+    private LabelService labelService;
+
     @GetMapping
     public Result findAll() {
-        return Result.builder().flag(true).code(StatusCode.OK.getCode()).message("查询成功").build();
+        return Result.builder()
+                .flag(true)
+                .code(StatusCode.OK.getCode())
+                .message("查询成功")
+                .data(labelService.findAll()).build();
     }
 
     @GetMapping("/{labelId}")
     public Result findById(@PathVariable("labelId") String id) {
-        return new Result(true, StatusCode.OK.getCode(), "查询成功");
+        return Result.builder()
+                .flag(true)
+                .code(StatusCode.OK.getCode())
+                .message("查询成功")
+                .data(labelService.findById(id)).build();
     }
 
     @PostMapping
