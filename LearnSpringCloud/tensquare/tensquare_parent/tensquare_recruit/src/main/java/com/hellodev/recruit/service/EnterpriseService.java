@@ -15,7 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.hellodev.util.IdWorker;
+import com.hellodev.common.utils.IdWorker;
 
 import com.hellodev.recruit.dao.EnterpriseDao;
 import com.hellodev.recruit.pojo.Enterprise;

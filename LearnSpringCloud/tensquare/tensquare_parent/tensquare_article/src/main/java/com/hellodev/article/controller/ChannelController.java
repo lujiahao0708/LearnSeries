@@ -1,9 +1,7 @@
-package com.hellodev.recruit.controller;
+package com.hellodev.article.controller;
+import java.util.List;
 import java.util.Map;
 
-import com.hellodev.common.entity.PageResult;
-import com.hellodev.common.entity.Result;
-import com.hellodev.common.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hellodev.recruit.pojo.Recruit;
-import com.hellodev.recruit.service.RecruitService;
+import com.hellodev.article.pojo.Channel;
+import com.hellodev.article.service.ChannelService;
 
+import com.hellodev.common.entity.PageResult;
+import com.hellodev.common.entity.Result;
+import com.hellodev.common.entity.StatusCode;
 /**
  * 控制器层
  * @author Administrator
@@ -23,11 +24,11 @@ import com.hellodev.recruit.service.RecruitService;
  */
 @RestController
 @CrossOrigin
-@RequestMapping("/recruit")
-public class RecruitController {
+@RequestMapping("/channel")
+public class ChannelController {
 
 	@Autowired
-	private RecruitService recruitService;
+	private ChannelService channelService;
 	
 	
 	/**
@@ -36,7 +37,7 @@ public class RecruitController {
 	 */
 	@RequestMapping(method= RequestMethod.GET)
 	public Result findAll(){
-		return new Result(true, StatusCode.OK.getCode(),"查询成功",recruitService.findAll());
+		return new Result(true,StatusCode.OK.getCode(),"查询成功",channelService.findAll());
 	}
 	
 	/**
@@ -46,7 +47,7 @@ public class RecruitController {
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.GET)
 	public Result findById(@PathVariable String id){
-		return new Result(true,StatusCode.OK.getCode(),"查询成功",recruitService.findById(id));
+		return new Result(true,StatusCode.OK.getCode(),"查询成功",channelService.findById(id));
 	}
 
 
@@ -59,8 +60,8 @@ public class RecruitController {
 	 */
 	@RequestMapping(value="/search/{page}/{size}",method=RequestMethod.POST)
 	public Result findSearch(@RequestBody Map searchMap , @PathVariable int page, @PathVariable int size){
-		Page<Recruit> pageList = recruitService.findSearch(searchMap, page, size);
-		return  new Result(true,StatusCode.OK.getCode(),"查询成功",  new PageResult<Recruit>(pageList.getTotalElements(), pageList.getContent()) );
+		Page<Channel> pageList = channelService.findSearch(searchMap, page, size);
+		return  new Result(true,StatusCode.OK.getCode(),"查询成功",  new PageResult<Channel>(pageList.getTotalElements(), pageList.getContent()) );
 	}
 
 	/**
@@ -70,27 +71,27 @@ public class RecruitController {
      */
     @RequestMapping(value="/search",method = RequestMethod.POST)
     public Result findSearch( @RequestBody Map searchMap){
-        return new Result(true,StatusCode.OK.getCode(),"查询成功",recruitService.findSearch(searchMap));
+        return new Result(true,StatusCode.OK.getCode(),"查询成功",channelService.findSearch(searchMap));
     }
 	
 	/**
 	 * 增加
-	 * @param recruit
+	 * @param channel
 	 */
 	@RequestMapping(method=RequestMethod.POST)
-	public Result add(@RequestBody Recruit recruit  ){
-		recruitService.add(recruit);
+	public Result add(@RequestBody Channel channel  ){
+		channelService.add(channel);
 		return new Result(true,StatusCode.OK.getCode(),"增加成功");
 	}
 	
 	/**
 	 * 修改
-	 * @param recruit
+	 * @param channel
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.PUT)
-	public Result update(@RequestBody Recruit recruit, @PathVariable String id ){
-		recruit.setId(id);
-		recruitService.update(recruit);		
+	public Result update(@RequestBody Channel channel, @PathVariable String id ){
+		channel.setId(id);
+		channelService.update(channel);		
 		return new Result(true,StatusCode.OK.getCode(),"修改成功");
 	}
 	
@@ -100,7 +101,7 @@ public class RecruitController {
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.DELETE)
 	public Result delete(@PathVariable String id ){
-		recruitService.deleteById(id);
+		channelService.deleteById(id);
 		return new Result(true,StatusCode.OK.getCode(),"删除成功");
 	}
 	
