@@ -12,6 +12,46 @@ services:
     networks:
       - tensquare
 
+  mongo:
+    container_name: tensquare_mongo
+    image: mongo
+    ports:
+      - 27027:27027
+    restart: always
+    networks:
+      - tensquare
+
+#################################elk配置#################################
+# 参考链接 : https://github.com/deviantony/docker-elk
+  elasticsearch:
+    container_name: tensquare_elasticsearch
+    image: elasticsearch:5.6.8
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - ./conf/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:rw
+    restart: always
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - tensquare
+    # 安装ik分词器 进入容器后执行下面命令
+    # ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v5.6.8/elasticsearch-analysis-ik-5.6.8.zip
+
+  kibana:
+    container_name: tensquare_kibana
+    image: kibana:5.6.8
+    ports:
+      - "5601:5601"
+    volumes:
+      - ./conf/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:rw
+    networks:
+      - tensquare
+    depends_on:
+      - elasticsearch
+
+#################################elk配置#################################
 
 networks:
   tensquare:

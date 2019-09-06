@@ -11,6 +11,10 @@ spring:
   jpa: 
     database: MySQL
     show-sql: true
+  data:
+    mongodb:
+      host: 127.0.0.1
+      database: recruitdb
   redis:
     host: 127.0.0.1
 
