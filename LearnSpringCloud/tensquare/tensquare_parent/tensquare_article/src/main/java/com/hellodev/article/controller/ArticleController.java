@@ -30,14 +30,20 @@ public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
 
+	/**
+	 * 文章审核
+	 */
 	@RequestMapping(value = "/examine/{articleId}", method= RequestMethod.PUT)
 	public Result examine(@PathVariable String articleId){
 		articleService.updateState(articleId);
 		return new Result(true,StatusCode.OK.getCode(),"审核成功");
 	}
 
+	/**
+	 * 文章点赞
+	 */
 	@RequestMapping(value = "/thumbup/{articleId}", method= RequestMethod.PUT)
-	public Result Thumbup(@PathVariable String articleId){
+	public Result thumbup(@PathVariable String articleId){
 		articleService.addThumbup(articleId);
 		return new Result(true,StatusCode.OK.getCode(),"点赞成功");
 	}

@@ -1,0 +1,34 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+### 新增文章
+POST {{url}}:{{articlePort}}/article
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+
+{
+  "title": "测试文章",
+  "content": "测试文章内容",
+  "state": "0"
+}
+
+### 文章审核
+PUT {{url}}:{{articlePort}}/article/examine/1169808544959172608
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+
+### 文章点赞
+PUT {{url}}:{{articlePort}}/article/thumbup/1169808544959172608
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+
+### 根据id查询文章
+GET {{url}}:{{articlePort}}/article/1169808544959172608
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+
+###

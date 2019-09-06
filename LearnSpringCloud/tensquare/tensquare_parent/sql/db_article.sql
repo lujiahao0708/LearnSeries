@@ -2,7 +2,8 @@
 SQLyog v10.2 
 MySQL - 5.5.49 : Database - tensquare_article
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -29,17 +30,17 @@ CREATE TABLE `tb_article` (
   `image` varchar(100) DEFAULT NULL COMMENT '文章封面',
   `createtime` datetime DEFAULT NULL COMMENT '发表日期',
   `updatetime` datetime DEFAULT NULL COMMENT '修改日期',
-  `ispublic` varchar(1) DEFAULT NULL COMMENT '是否公开',
-  `istop` varchar(1) DEFAULT NULL COMMENT '是否置顶',
+  `ispublic` varchar(1) DEFAULT NULL COMMENT '是否公开 0:不公开 1:公开',
+  `istop` varchar(1) DEFAULT NULL COMMENT '是否置顶 0:不置顶 1:置顶',
   `visits` int(20) DEFAULT NULL COMMENT '浏览量',
   `thumbup` int(20) DEFAULT NULL COMMENT '点赞数',
   `comment` int(20) DEFAULT NULL COMMENT '评论数',
-  `state` varchar(1) DEFAULT NULL COMMENT '审核状态',
+  `state` varchar(1) DEFAULT NULL COMMENT '审核状态 0:未审核 1:已审核',
   `channelid` varchar(20) DEFAULT NULL COMMENT '所属频道',
   `url` varchar(100) DEFAULT NULL COMMENT 'URL',
-  `type` varchar(1) DEFAULT NULL COMMENT '类型',
+  `type` varchar(1) DEFAULT NULL COMMENT '类型 0:分享 1:专栏',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='文章';
 
 /*Data for the table `tb_article` */
 

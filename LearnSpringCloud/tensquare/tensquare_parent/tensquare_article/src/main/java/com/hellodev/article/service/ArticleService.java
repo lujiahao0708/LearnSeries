@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -12,37 +13,53 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Selection;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Service;
 
 import com.hellodev.common.utils.IdWorker;
 
 import com.hellodev.article.dao.ArticleDao;
 import com.hellodev.article.pojo.Article;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
- * 服务层
- * 
- * @author Administrator
- *
+ * 文章服务
+ * @author lujiahao
+ * @date 2019-09-06
  */
+@Slf4j
 @Service
 public class ArticleService {
 
 	@Autowired
 	private ArticleDao articleDao;
-	
 	@Autowired
 	private IdWorker idWorker;
+	@Autowired
+	private RedisTemplate redisTemplate;
 
+	public static final String ARTICLE_REDIS_PREFIX = "article_";
+
+	/**
+	 * 文章审核
+	 */
+	@Transactional
 	public void updateState(String id) {
 		articleDao.updateState(id);
 	}
 
+	/**
+	 * 文章点赞
+	 */
+	@Transactional
 	public void addThumbup(String id){
 		articleDao.addThumbup(id);
 	}
@@ -57,10 +74,6 @@ public class ArticleService {
 	
 	/**
 	 * 条件查询+分页
-	 * @param whereMap
-	 * @param page
-	 * @param size
-	 * @return
 	 */
 	public Page<Article> findSearch(Map whereMap, int page, int size) {
 		Specification<Article> specification = createSpecification(whereMap);
@@ -71,8 +84,6 @@ public class ArticleService {
 	
 	/**
 	 * 条件查询
-	 * @param whereMap
-	 * @return
 	 */
 	public List<Article> findSearch(Map whereMap) {
 		Specification<Article> specification = createSpecification(whereMap);
@@ -81,16 +92,22 @@ public class ArticleService {
 
 	/**
 	 * 根据ID查询实体
-	 * @param id
-	 * @return
 	 */
 	public Article findById(String id) {
-		return articleDao.findById(id).get();
+		// 从缓存中提取
+		Article article = (Article) redisTemplate.opsForValue().get(ARTICLE_REDIS_PREFIX + id);
+
+		if (article == null) {
+			article = articleDao.findById(id).get();
+			redisTemplate.opsForValue().set(ARTICLE_REDIS_PREFIX + id, article, 20, TimeUnit.SECONDS);
+			log.info("[缓存中没有,从数据库查询,查询成功后放入缓存][article:{}]", article.toString());
+		}
+
+		return article;
 	}
 
 	/**
 	 * 增加
-	 * @param article
 	 */
 	public void add(Article article) {
 		article.setId( idWorker.nextId()+"" );
@@ -99,24 +116,24 @@ public class ArticleService {
 
 	/**
 	 * 修改
-	 * @param article
 	 */
 	public void update(Article article) {
+		// 删除缓存
+		redisTemplate.delete(ARTICLE_REDIS_PREFIX + article.getId());
 		articleDao.save(article);
 	}
 
 	/**
 	 * 删除
-	 * @param id
 	 */
 	public void deleteById(String id) {
+		// 删除缓存
+		redisTemplate.delete(ARTICLE_REDIS_PREFIX + id);
 		articleDao.deleteById(id);
 	}
 
 	/**
 	 * 动态条件构建
-	 * @param searchMap
-	 * @return
 	 */
 	private Specification<Article> createSpecification(Map searchMap) {
 
