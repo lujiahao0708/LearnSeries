@@ -1,14 +1,22 @@
 version: "3"
 services:
+  mysql:
+    container_name: tensquare_mysql
+    image: mysql:5.7.6
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+    networks:
+      - tensquare
+
   redis:
     container_name: tensquare_redis
     image: redis
     ports:
       - 6379:6379
     restart: always
-#    volumes:
-#      这里看情况是否要挂载
-#      - ./conf/mysql/mysql_data:/var/lib/mysql
     networks:
       - tensquare
 
@@ -20,6 +28,8 @@ services:
     restart: always
     networks:
       - tensquare
+
+# 内部链接系统的话可以考虑不开放端口  eg: es不开端口   kibana直接链接es实例
 
 #################################elk配置#################################
 # 参考链接 : https://github.com/deviantony/docker-elk
@@ -36,8 +46,6 @@ services:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - tensquare
-    # 安装ik分词器 进入容器后执行下面命令
-    # ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v5.6.8/elasticsearch-analysis-ik-5.6.8.zip
 
   kibana:
     container_name: tensquare_kibana
@@ -46,12 +54,58 @@ services:
       - "5601:5601"
     volumes:
       - ./conf/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:rw
+    restart: always
     networks:
       - tensquare
     depends_on:
       - elasticsearch
 
+  # 这个还未成功 TODO
+  logstash:
+    container_name: tensquare_logstash
+    image: logstash:5.6.8
+    volumes:
+      - ./conf/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml:rw
+      - ./conf/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:rw
+      - ./conf/logstash/mysql-connector-java-5.1.46.jar:/usr/share/logstash/pipeline/mysql-connector-java-5.1.46.jar:rw
+    ports:
+      - "5000:5000"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - tensquare
+    depends_on:
+      - mysql
+      - elasticsearch
+
+  # head插件
+  elasticsearch-head:
+    container_name: tensquare_elasticsearch-head
+    image: mobz/elasticsearch-head:5
+    ports:
+      - 9100:9100
+    restart: always
+    networks:
+      - tensquare
+    depends_on:
+      - elasticsearch
 #################################elk配置#################################
+
+  rabbitmq:
+    container_name: tensquare_rabbitmq
+    image: rabbitmq:management
+    ports:
+      - 5671:5617
+      - 5672:5672
+      - 4369:4369
+      - 15671:15671
+      - 15672:15672
+      - 25672:25672
+    restart: always
+    networks:
+      - tensquare
+
 
 networks:
   tensquare:
