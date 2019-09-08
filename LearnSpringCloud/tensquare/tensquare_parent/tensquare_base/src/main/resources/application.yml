@@ -11,3 +11,14 @@ spring:
   jpa:
     database: mysql
     show-sql: true
+
+eureka:
+  client:
+    # 客户端注册进eureka服务列表内
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka
+  instance:
+    # 自定义服务名称信息
+#    instance-id: ${spring.application.name}
+    # 访问路径可以显示IP地址
+    prefer-ip-address: true
