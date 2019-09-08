@@ -1,26 +1,25 @@
-package com.hellodev.gathering;
+package com.tensquare.manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
-import com.hellodev.common.utils.IdWorker;
+import com.hellodev.common.utils.JwtUtil;
 
 @SpringBootApplication
-@EnableCaching
 @EnableEurekaClient
 @EnableDiscoveryClient
-public class GatheringApplication {
+@EnableZuulProxy// 开启网管代理
+public class ManagerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GatheringApplication.class, args);
+        SpringApplication.run(ManagerApplication.class, args);
     }
 
     @Bean
-    public IdWorker idWorkker() {
-        return new IdWorker(1, 1);
+    public JwtUtil jwtUtil() {
+        return new JwtUtil();
     }
-
 }

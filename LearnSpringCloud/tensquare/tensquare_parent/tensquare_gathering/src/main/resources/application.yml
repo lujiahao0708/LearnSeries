@@ -14,3 +14,10 @@ spring:
   redis:
     host: 127.0.0.1
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:6868/eureka/
+  instance:
+    # 跨域访问
+    prefer-ip-address: true
