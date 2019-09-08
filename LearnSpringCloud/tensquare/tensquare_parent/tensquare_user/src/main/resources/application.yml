@@ -11,3 +11,8 @@ spring:
   jpa: 
     database: MySQL
     show-sql: true
+
+jwt:
+  config:
+    key: itcast
+    ttl: 360000

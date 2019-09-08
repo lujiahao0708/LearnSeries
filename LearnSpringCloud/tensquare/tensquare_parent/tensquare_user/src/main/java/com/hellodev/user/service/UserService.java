@@ -17,6 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.hellodev.common.utils.IdWorker;
@@ -42,6 +43,22 @@ public class UserService {
     private RedisTemplate redisTemplate;
     @Autowired
     private RabbitTemplate rabbitTemplate;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
+    /**
+     * 根据手机号和密码查询用户 * @param mobile
+     *
+     * @param password
+     * @return
+     */
+    public User findByMobileAndPassword(String mobile, String password) {
+        User user = userDao.findByMobile(mobile);
+        if (user != null && encoder.matches(password, user.getPassword())) {
+            return user;
+        }
+        return null;
+    }
 
     /**
      * 增加
@@ -64,6 +81,10 @@ public class UserService {
         user.setRegdate(new Date());//注册日期
         user.setUpdatedate(new Date());//更新日期
         user.setLastdate(new Date());//最后登陆日期
+
+        //密码加密
+        String newpassword = encoder.encode(user.getPassword());//加密后的
+        user.setPassword(newpassword);
         userDao.save(user);
     }
 
