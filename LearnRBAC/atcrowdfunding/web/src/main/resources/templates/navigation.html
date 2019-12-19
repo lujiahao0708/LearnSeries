@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="nav">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div><a class="navbar-brand" style="font-size:32px;" href="#">众筹平台 - 控制面板</a></div>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="padding-top:8px;">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-success dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user"></i> <span th:text="${#httpServletRequest.getSession().getAttribute('loginUser').username}"></span> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/logout"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li style="margin-left:10px;padding-top:8px;">
+                        <button type="button" class="btn btn-default btn-danger">
+                            <span class="glyphicon glyphicon-question-sign"></span> 帮助
+                        </button>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="查询">
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="menu">
+<!--    <ul style="padding-left:0px;" class="list-group">-->
+<!--        <c:forEach items="${rootPermission.children}" var="permission">-->
+<!--            <c:if test="${empty permission.children}">-->
+<!--                <li class="list-group-item tree-closed" >-->
+<!--                    <a href="${APP_PATH}${permission.url}"><i class="${permission.icon}"></i> ${permission.name}</a>-->
+<!--                </li>-->
+<!--            </c:if>-->
+<!--            <c:if test="${not empty permission.children}">-->
+<!--                <li class="list-group-item tree-closed">-->
+<!--                    <span><i class="${permission.icon}"></i> ${permission.name} <span class="badge" style="float:right">${permission.children.size()}</span></span>-->
+<!--                    <ul style="margin-top:10px;display:none;">-->
+<!--                        <c:forEach items="${permission.children}" var="child">-->
+<!--                            <li style="height:30px;">-->
+<!--                                <a href="${APP_PATH}${child.url}"><i class="${child.icon}"></i> ${child.name}</a>-->
+<!--                            </li>-->
+<!--                        </c:forEach>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--            </c:if>-->
+<!--        </c:forEach>-->
+<!--    </ul>-->
+
+    <ul style="padding-left:0px;" class="list-group">
+        <li class="list-group-item tree-closed" >
+            <a href="/main"><i class="glyphicon glyphicon-dashboard"></i> 控制面板</a>
+        </li>
+        <li class="list-group-item tree-closed">
+            <span><i class="glyphicon glyphicon glyphicon-tasks"></i> 权限管理 <span class="badge" style="float:right">3</span></span>
+            <ul style="margin-top:10px;">
+                <li style="height:30px;">
+                    <a href="/user/index" style="color:red;"><i class="glyphicon glyphicon-user"></i> 用户维护</a>
+                </li>
+                <li style="height:30px;">
+                    <a href="/role/index"><i class="glyphicon glyphicon-king"></i> 角色维护</a>
+                </li>
+                <li style="height:30px;">
+                    <a href="/permission/index"><i class="glyphicon glyphicon-lock"></i> 许可维护</a>
+                </li>
+            </ul>
+        </li>
+        <li class="list-group-item tree-closed">
+            <span><i class="glyphicon glyphicon-ok"></i> 业务审核 <span class="badge" style="float:right">3</span></span>
+            <ul style="margin-top:10px;display:none;">
+                <li style="height:30px;">
+                    <a href="auth_cert.html"><i class="glyphicon glyphicon-check"></i> 实名认证审核</a>
+                </li>
+                <li style="height:30px;">
+                    <a href="auth_adv.html"><i class="glyphicon glyphicon-check"></i> 广告审核</a>
+                </li>
+                <li style="height:30px;">
+                    <a href="auth_project.html"><i class="glyphicon glyphicon-check"></i> 项目审核</a>
+                </li>
+            </ul>
+        </li>
+        <li class="list-group-item tree-closed">
+            <span><i class="glyphicon glyphicon-th-large"></i> 业务管理 <span class="badge" style="float:right">7</span></span>
+            <ul style="margin-top:10px;display:none;">
+                <li style="height:30px;">
+                    <a href="cert.html"><i class="glyphicon glyphicon-picture"></i> 资质维护</a>
+                </li>
+                <li style="height:30px;">
+                    <a href="type.html"><i class="glyphicon glyphicon-equalizer"></i> 分类管理</a>
+                </li>
+                <li style="height:30px;">
+                    <a href="process.html"><i class="glyphicon glyphicon-random"></i> 流程管理</a>
+                </li>
+                <li style="height:30px;">
+                    <a href="advertisement.html"><i class="glyphicon glyphicon-hdd"></i> 广告管理</a>
+                </li>
+                <li style="height:30px;">
+                    <a href="message.html"><i class="glyphicon glyphicon-comment"></i> 消息模板</a>
+                </li>
+                <li style="height:30px;">
+                    <a href="project_type.html"><i class="glyphicon glyphicon-list"></i> 项目分类</a>
+                </li>
+                <li style="height:30px;">
+                    <a href="tag.html"><i class="glyphicon glyphicon-tags"></i> 项目标签</a>
+                </li>
+            </ul>
+        </li>
+        <li class="list-group-item tree-closed" >
+            <a href="param.html"><i class="glyphicon glyphicon-list-alt"></i> 参数管理</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

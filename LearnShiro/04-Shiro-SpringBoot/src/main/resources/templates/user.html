@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${value}]]</title>
+</head>
+<body>
+<p>[[${value}]]</p>
+<a th:href="@{/index}">返回</a>
+<a th:href="@{/logout}">注销</a>
+
+<table>
+    <tr>
+        <td>用户id</td>
+        <td>用户名称</td>
+    </tr>
+    <tr th:each="user : ${userList}">
+        <td>[[${user.id}]]</td>
+        <td>[[${user.username}]]</td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="/css/doc.min.css"/>
+    <link rel="stylesheet" href="/css/login.css"/>
+    <link rel="stylesheet" href="/ztree/zTreeStyle.css"/>
+
+    <script src="/jquery/jquery-2.1.1.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/script/docs.min.js"></script>
+    <script src="/layer/layer.js"></script>
+    <script src="/ztree/jquery.ztree.all-3.5.min.js"></script>
+</head>
+
+<div th:fragment="help">
+    <!--帮助按钮-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                            class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">帮助</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="bs-callout bs-callout-info">
+                        <h4>测试标题1</h4>
+                        <p>测试内容1，测试内容1，测试内容1，测试内容1，测试内容1，测试内容1</p>
+                    </div>
+                    <div class="bs-callout bs-callout-info">
+                        <h4>测试标题2</h4>
+                        <p>测试内容2，测试内容2，测试内容2，测试内容2，测试内容2，测试内容2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</html>

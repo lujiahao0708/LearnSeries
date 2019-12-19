@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lujiahao.dao.RoleDao" >
+    
+    <select id="pageQueryData" resultType="com.lujiahao.bean.Role">
+        select
+            *
+        from t_role
+        <where>
+            <if test="queryText != null">
+            and name like concat('%', #{queryText}, '%')
+            </if>
+        </where>
+        limit #{start}, #{size}
+    </select>
+    
+    <select id="pageQueryCount" resultType="int">
+        select
+            count(*)
+        from t_role
+        <where>
+            <if test="queryText != null">
+            and name like concat('%', #{queryText}, '%')
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertRole">
+        insert into t_role (
+            name
+        ) values (
+            #{name}
+        )
+    </insert>
+    
+    <insert id="insertRolePermission">
+        insert into t_role_permission (roleid, permissionid) values 
+        <foreach collection="permissionids" item="permissionid" separator=",">
+        ( #{roleid}, #{permissionid} )
+        </foreach>
+    </insert>
+    
+    <delete id="deleteRolePermissions">
+        delete from t_role_permission where roleid = #{roleid}
+    </delete>
+    
+</mapper>

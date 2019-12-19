@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="login-page">
+    <form action="/doLogin" method="post">
+        <div class="form">
+            <input type="text" placeholder="用户名" name="username" required="required"/><br/>
+            <input type="password" placeholder="密码" name="password" required="required"/><br/>
+            <p><input type="checkbox" name="rememberMe" />记住我</p>
+            <input type="submit" value="登陆"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>
