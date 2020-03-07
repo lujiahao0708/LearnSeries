@@ -1,0 +1,34 @@
+version: '3'
+services:
+  mysql_master:
+    container_name: mysql_master
+    image: mysql:5.7
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+    ports:
+      - "3307:3306"
+    restart: always
+    volumes:
+      - /Users/lujiahao/dockerData/mysql/master/log:/var/log/mysql
+      - /Users/lujiahao/dockerData/mysql/master/data:/var/lib/mysql
+      - /Users/lujiahao/dockerData/mysql/master/conf:/etc/mysql
+#    extra_hosts:
+#      - "a.com:192.168.31.174"
+#      - "b.com:192.168.31.136"
+
+  mysql_slave_01:
+    container_name: mysql_slave_01
+    image: mysql:5.7
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+    ports:
+      - "3308:3306"
+    depends_on:
+      - mysql_master
+    links:
+      - mysql_master
+    restart: always
+    volumes:
+      - /Users/lujiahao/dockerData/mysql/slave01/log:/var/log/mysql
+      - /Users/lujiahao/dockerData/mysql/slave01/data:/var/lib/mysql
+      - /Users/lujiahao/dockerData/mysql/slave01/conf:/etc/mysql
