@@ -1,5 +1,5 @@
 # Redis 相关的部署文件
-- redis.conf：Redis 默认配置文件
+- redis.conf：Redis 默认配置文件(http://download.redis.io/redis-stable/redis.conf)
 
 
 ## 1.redis-single
