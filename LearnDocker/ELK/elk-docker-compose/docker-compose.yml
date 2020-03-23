@@ -1,14 +1,12 @@
 version: '3'
 services:
   elasticsearch:
-    container_name: elasticsearch
+    container_name: es_node1
     image: elasticsearch:5.6.11
     environment:
       - "ES_JAVA_OPTS=-Xms128m -Xmx256m"
     volumes:
-      - /Users/lujiahao/dockerData/elasticsearch/data:/usr/share/elasticsearch/data
-      - /Users/lujiahao/dockerData/elasticsearch/config:/usr/share/elasticsearch/config
-    restart: always
+      - es_data1:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -17,11 +15,6 @@ services:
     image: kibana:5.6.11
     environment:
       - "ELASTICSEARCH_URL=http://elasticsearch:9200"
-    depends_on:
-      - elasticsearch
-    links:
-      - elasticsearch
-    restart: always
     ports:
       - "5601:5601"
   logstash:
@@ -31,11 +24,16 @@ services:
     command: logstash -f /etc/logstash/conf.d/logstash.conf
     volumes:
       # logstash 配文件位置
-      - /Users/lujiahao/dockerData/logstash/conf.d/logstash.conf:/etc/logstash/conf.d/logstash.conf
-    restart: always
-    depends_on:
-      - elasticsearch
-    links:
-      - elasticsearch
+      - $PWD/logstash/conf.d/logstash.conf:/etc/logstash/conf.d/logstash.conf
     ports:
       - "4560:4560"
+  cerebro:
+    container_name: cerebro
+    image: lmenezes/cerebro:0.8.3
+    ports:
+      - "9001:9000"
+    command:
+      - -Dhosts.0.host=http://elasticsearch:9200
+volumes:
+  es_data1:
+    driver: local

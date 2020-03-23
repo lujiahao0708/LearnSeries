@@ -9,21 +9,21 @@ Docker启动Redis容器，步骤很简单，和启动mysql容器是一样的：D
 
 当Redis启动后发现连接不上，是因为Redis默认是不支持远程连接的，需要修改配置文件。
 
-执行如下命令，会发现只能本地连接，127.0.0.1连接
+先查看 redis 容器的ip 地址:
+docker inspect local-redis
+找到 NetworkSettings  Networks  IPAddress
+"IPAddress": "172.17.0.3",
 
-root@iZuf6axmuekh1n14dwcufmZ:~# ps -ef |grep redis
-root      1674   361  0 15:31 pts/1    00:00:00 grep --color=auto redis
-root     14954     1  0  2017 ?        00:24:08 ./redis-server 127.0.0.1:6379
 打开redis的配置文件
 bind 127.0.0.1
 改为 
-bind 0.0.0.0
-或者注释掉即可
+bind 127.0.0.1 172.17.0.3
 
-再次查看：
+127.0.0.1 : 本机连接使用  redis-cli
+172.17.0.3 : 外部机器连接使用
 
-root@iZuf6axmuekh1n14dwcufmZ:~# ps -ef |grep redis
-root      1674   361  0 15:31 pts/1    00:00:00 grep --color=auto redis
-root     14954     1  0  2017 ?        00:24:08 ./redis-server 0.0.0.0:6379
-发现地址变为：0.0.0.0。
+重新使用客户端连接即可
+
+> 这里需要注意下,网上有些教程说可以改成 0.0.0.0 不推荐这么做
+> https://juejin.im/post/5d258b6ae51d454f73356dcf   0.0.0.0有一定的安全隐患
 
