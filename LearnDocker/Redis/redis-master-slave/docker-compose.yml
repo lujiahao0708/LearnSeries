@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 services:
   master:
     image: redis
@@ -6,6 +6,9 @@ services:
     command: redis-server
     ports:
       - "6380:6379"
+    networks:
+      - redis_master_slave
+  
   slave1:
     image: redis
     container_name: redis-slave-1
@@ -14,6 +17,9 @@ services:
     command: redis-server --slaveof redis-master 6379
     depends_on:
       - master
+    networks:
+      - redis_master_slave
+  
   slave2:
     image: redis
     container_name: redis-slave-2
@@ -22,3 +28,10 @@ services:
     command: redis-server --slaveof redis-master 6379
     depends_on:
       - master
+    networks:
+      - redis_master_slave
+
+networks:
+  redis_master_slave:
+    name: redis_master_slave
+    driver: bridge
