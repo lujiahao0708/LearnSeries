@@ -8,7 +8,7 @@
   - NoSQL 简介
   - Redis 安装
   - Redis 常用命令
-  - Redis 数据类型-
+  - Redis 数据类型
     - String
     - List
     - Hash
@@ -22,6 +22,9 @@
     - 主从模式
     - 哨兵模式
     - 集群模式
+  - [Redis Spring Boot 整合](./note/Redis 基础/16.Redis Spring Boot 整合.md)
+    - Jedis
+    - Lettuce
 - Redis 高级
 
 ## 资源推荐
