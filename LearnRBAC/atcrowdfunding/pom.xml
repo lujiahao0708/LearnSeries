@@ -27,7 +27,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <fastjson.version>1.2.61</fastjson.version>
+        <fastjson.version>1.2.7</fastjson.version>
         <guava.version>20.0</guava.version>
         <mybatis-starter.version>2.0.1</mybatis-starter.version>
     </properties>
