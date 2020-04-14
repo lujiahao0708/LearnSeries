@@ -27,7 +27,7 @@ services:
     volumes:
       - ./data/broker/logs:/home/rocketmq/logs
       - ./data/broker/store:/home/rocketmq/store
-      - ./data/broker/conf/broker.conf:/opt/rocketmq-4.5.0/conf/broker.conf
+      - ./conf/broker.conf:/opt/rocketmq-4.5.0/conf/broker.conf
     command: sh mqbroker -c /opt/rocketmq-4.5.0/conf/broker.conf
     networks:
       - rmq

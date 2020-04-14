@@ -1,0 +1,123 @@
+version: '3.5'
+services:
+  rmqnamesrv-a:
+    image: apacherocketmq/rocketmq:4.5.0
+    container_name: rmqnamesrv-a
+    ports:
+      - 9876:9876
+    volumes:
+      - ./data/namesrv/rmqnamesrv-a/logs:/home/rocketmq/logs
+    command: sh mqnamesrv
+    networks:
+      - rmq
+  rmqnamesrv-b:
+    image: apacherocketmq/rocketmq:4.5.0
+    container_name: rmqnamesrv-b
+    ports:
+      - 9877:9876
+    volumes:
+      - ./data/namesrv/rmqnamesrv-b/logs:/home/rocketmq/logs
+    command: sh mqnamesrv
+    networks:
+      - rmq
+
+  rmqbroker-a:
+    image: apacherocketmq/rocketmq:4.5.0
+    container_name: rmqbroker-a
+    links:
+      - rmqnamesrv-a
+      - rmqnamesrv-b
+    ports:
+      - 10909:10909
+      - 10911:10911
+      - 10912:10912
+    environment:
+      TZ: Asia/Shanghai
+      JAVA_OPT_EXT: "-server -Xms256m -Xmx256m -Xmn256m"
+    volumes:
+      - ./data/broker/rmqbroker-a/logs:/home/rocketmq/logs
+      - ./data/broker/rmqbroker-a/store:/home/rocketmq/store
+      - ./conf/broker-a.conf:/opt/rocketmq-4.5.0/conf/broker.conf
+    command: sh mqbroker -c /opt/rocketmq-4.5.0/conf/broker.conf
+    networks:
+      - rmq
+  rmqbroker-a-s:
+    image: apacherocketmq/rocketmq:4.5.0
+    container_name: rmqbroker-a-s
+    links:
+      - rmqnamesrv-a
+      - rmqnamesrv-b
+    ports:
+      - 10913:10909
+      - 10914:10911
+      - 10915:10912
+    environment:
+      TZ: Asia/Shanghai
+      JAVA_OPT_EXT: "-server -Xms256m -Xmx256m -Xmn256m"
+    volumes:
+      - ./data/broker/rmqbroker-a-s/logs:/home/rocketmq/logs
+      - ./data/broker/rmqbroker-a-s/store:/home/rocketmq/store
+      - ./conf/broker-a-s.conf:/opt/rocketmq-4.5.0/conf/broker.conf
+    command: sh mqbroker -c /opt/rocketmq-4.5.0/conf/broker.conf
+    networks:
+      - rmq
+  
+  rmqbroker-b:
+    image: apacherocketmq/rocketmq:4.5.0
+    container_name: rmqbroker-b
+    links:
+      - rmqnamesrv-a
+      - rmqnamesrv-b
+    ports:
+      - 10919:10909
+      - 10920:10911
+      - 10921:10912
+    environment:
+      TZ: Asia/Shanghai
+      JAVA_OPT_EXT: "-server -Xms256m -Xmx256m -Xmn256m"
+    volumes:
+      - ./data/broker/rmqbroker-b/logs:/home/rocketmq/logs
+      - ./data/broker/rmqbroker-b/store:/home/rocketmq/store
+      - ./conf/broker-b.conf:/opt/rocketmq-4.5.0/conf/broker.conf
+    command: sh mqbroker -c /opt/rocketmq-4.5.0/conf/broker.conf
+    networks:
+      - rmq
+  rmqbroker-b-s:
+    image: apacherocketmq/rocketmq:4.5.0
+    container_name: rmqbroker-b-s
+    links:
+      - rmqnamesrv-a
+      - rmqnamesrv-b
+    ports:
+      - 10922:10909
+      - 10923:10911
+      - 10924:10912
+    environment:
+      TZ: Asia/Shanghai
+      JAVA_OPT_EXT: "-server -Xms256m -Xmx256m -Xmn256m"
+    volumes:
+      - ./data/broker/rmqbroker-b-s/logs:/home/rocketmq/logs
+      - ./data/broker/rmqbroker-b-s/store:/home/rocketmq/store
+      - ./conf/broker-b-s.conf:/opt/rocketmq-4.5.0/conf/broker.conf
+    command: sh mqbroker -c /opt/rocketmq-4.5.0/conf/broker.conf
+    networks:
+      - rmq
+
+  rmqconsole:
+    image: styletang/rocketmq-console-ng
+    container_name: rmqconsole
+    ports:
+      - 8080:8080
+    environment:
+      # 注意这里 namesrv 地址要填对
+      JAVA_OPTS: "-Drocketmq.namesrv.addr=rmqnamesrv-a:9876;rmqnamesrv-b:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
+    depends_on:
+      - rmqnamesrv-a
+      - rmqnamesrv-b
+    networks:
+      - rmq
+
+networks:
+  rmq:
+    name: rmq
+    driver: bridge
