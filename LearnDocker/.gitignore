@@ -122,6 +122,6 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-/RocketMQ/RocketMQ-single/data/broker/logs/
-/RocketMQ/RocketMQ-single/data/broker/store/
-/RocketMQ/RocketMQ-single/data/namesrv/logs/
+/RocketMQ/*/data/broker/logs/
+/RocketMQ/*/data/broker/store/
+/RocketMQ/*/data/namesrv/logs/
