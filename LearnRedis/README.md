@@ -19,7 +19,7 @@
 
 ## 资源推荐
 
-- Redis 基础教程（https://www.bilibili.com/video/BV11E4114772）
+- Redis 基础教程 https://www.bilibili.com/video/BV11E4114772
 
 
 
