@@ -29,7 +29,10 @@ public class BatchProducer {
             // 创建消息,并制定 topic/tag和消息体
             Message message = null;
             try {
-                message = new Message("TopicTest", "TagA", ("Hello RocketMQ " + r).getBytes(RemotingHelper.DEFAULT_CHARSET));
+                message = new Message(
+                        "TopicTest",
+                        "TagA",
+                        ("Hello RocketMQ " + r).getBytes(RemotingHelper.DEFAULT_CHARSET));
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }

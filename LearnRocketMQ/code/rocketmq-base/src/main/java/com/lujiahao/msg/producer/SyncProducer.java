@@ -22,7 +22,10 @@ public class SyncProducer {
         producer.start();
         for (int i = 0; i < 100; i++) {
             // 创建消息,并制定 topic/tag和消息体
-            Message message = new Message("TopicTest", "TagA", ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
+            Message message = new Message(
+                    "TopicTest",
+                    "TagA",
+                    ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
             // 发送消息到一个 broker
             SendResult sendResult = producer.send(message);
             // 输出发送结果

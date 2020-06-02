@@ -24,7 +24,10 @@ public class OneWayProducer {
         producer.start();
         for (int i = 0; i < 100; i++) {
             // 创建消息体
-            Message message = new Message("TopicTest", "TagA", "Hello world".getBytes(RemotingHelper.DEFAULT_CHARSET));
+            Message message = new Message(
+                    "TopicTest",
+                    "TagA",
+                    "Hello world".getBytes(RemotingHelper.DEFAULT_CHARSET));
             // 发送单向消息,没有任何返回结果
             producer.sendOneway(message);
         }
