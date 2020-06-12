@@ -1,4 +1,4 @@
-package com.lujiahao.msg.producer;
+package com.lujiahao.base.producer;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;

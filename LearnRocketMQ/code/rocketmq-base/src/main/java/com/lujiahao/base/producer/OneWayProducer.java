@@ -1,12 +1,8 @@
-package com.lujiahao.msg.producer;
+package com.lujiahao.base.producer;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
-import org.apache.rocketmq.client.producer.SendCallback;
-import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * 单向模式发送消息
