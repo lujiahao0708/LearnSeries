@@ -9,12 +9,14 @@
   - [4.RocketMQ 简单消息示例](./base/4.RocketMQ%20简单消息示例.md)
 - RocketMQ 高级
 - RocketMQ 源码
+  - [RocketMQ 源码分析（一）环境搭建](./source_code/01.RocketMQ%20源码分析（一）环境搭建.md)
 
 ## 资源推荐
 - [http://rocketmq.apache.org/docs/quick-start/](http://rocketmq.apache.org/docs/quick-start/)
 - 《RocketMQ 技术内幕》
 - [RocketMQ 基础教程](https://www.bilibili.com/video/BV1ta4y1x729)
 - [阿里中间件团队博客](http://jm.taobao.org/)
+- 《RocketMQ 技术内幕》
 
 
 ---
