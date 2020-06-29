@@ -26,7 +26,7 @@ services:
       - 10912:10912
     environment:
       - NAMESRV_ADDR=rmqnamesrv:9876
-      - JAVA_OPT_EXT=-server -Xms128m -Xmx128m -Xmn128m
+      - JAVA_OPT=${JAVA_OPT} -server -Xms512m -Xmx512m -Xmn256m -XX:PermSize=128m -XX:MaxPermSize=128m
     volumes:
       - ./data/rmqbroker/logs:/home/rocketmq/logs
       - ./data/rmqbroker/store:/home/rocketmq/store
