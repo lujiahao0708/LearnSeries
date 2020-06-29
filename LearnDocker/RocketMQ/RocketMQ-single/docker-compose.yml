@@ -6,6 +6,8 @@ services:
     container_name: rmqnamesrv
     ports:
       - 9876:9876
+    environment:
+      - -JAVA_OPT_EXT=-server -Xms128m -Xmx128m -Xmn128m
     volumes:
       - ./data/rmqnamesrv/logs:/home/rocketmq/logs
     command: sh mqnamesrv
@@ -24,6 +26,7 @@ services:
       - 10912:10912
     environment:
       - NAMESRV_ADDR=rmqnamesrv:9876
+      - JAVA_OPT_EXT=-server -Xms128m -Xmx128m -Xmn128m
     volumes:
       - ./data/rmqbroker/logs:/home/rocketmq/logs
       - ./data/rmqbroker/store:/home/rocketmq/store
