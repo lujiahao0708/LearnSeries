@@ -26,7 +26,8 @@ services:
       - 10912:10912
     environment:
       NAMESRV_ADDR: "rmqnamesrv:9876"
-      JAVA_OPT_EXT: "-server -Xms256m -Xmx256m -Xmn256m"
+      JAVA_OPTS: " -Duser.home=/opt"
+      JAVA_OPT_EXT: "-server -Xms128m -Xmx128m -Xmn128m"
     volumes:
       - ./data/rmqbroker/logs:/home/rocketmq/logs
       - ./data/rmqbroker/store:/home/rocketmq/store
