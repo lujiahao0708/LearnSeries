@@ -9,7 +9,11 @@
   - [4.RocketMQ 简单消息示例](./base/4.RocketMQ%20简单消息示例.md)
 - RocketMQ 高级
 - RocketMQ 源码
-  - [RocketMQ 源码分析（一）环境搭建](./source_code/01.RocketMQ%20源码分析（一）环境搭建.md)
+  - [01.RocketMQ 源码分析（一）环境搭建](./source_code/01.RocketMQ%20源码分析（一）环境搭建.md)
+  - [02.RocketMQ 源码分析（二）NameServer 路由中心](./source_code/02.RocketMQ%20源码分析（二）NameServer%20路由中心.md)
+- RocketMQ 扩展
+  - [01.单机部署多个 RocketMQ 集群](./extend/01.单机部署多个%20RocketMQ%20集群.md)
+  - [02.同一工程向多个 RocketMQ 集群发送消息](./extend/02.同一工程向多个%20RocketMQ%20集群发送消息.md)
 
 ## 资源推荐
 - [http://rocketmq.apache.org/docs/quick-start/](http://rocketmq.apache.org/docs/quick-start/)
