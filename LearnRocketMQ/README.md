@@ -6,7 +6,8 @@
   - [1.RocketMQ 简介&安装](./base/1.RocketMQ%20简介&安装.md)
   - [2.RocketMQ 集群搭建](./base/2.RocketMQ%20集群搭建.md)
   - [3.mqadmin 命令汇总](./base/3.mqadmin%20命令汇总.md)
-  - [4.RocketMQ 简单消息示例](./base/4.RocketMQ%20简单消息示例.md)
+  - [4.RocketMQ 消息发送和消费](./base/4.RocketMQ%20消息发送和消费.md)
+  - [5.RocketMQ 常见异常](./base/4.RocketMQ%20常见异常.md)
 - RocketMQ 高级
 - RocketMQ 源码
   - [01.RocketMQ 源码分析（一）环境搭建](./source_code/01.RocketMQ%20源码分析（一）环境搭建.md)
