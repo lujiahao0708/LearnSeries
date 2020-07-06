@@ -12,6 +12,7 @@
 - RocketMQ 源码
   - [01.RocketMQ 源码分析（一）环境搭建](./source_code/01.RocketMQ%20源码分析（一）环境搭建.md)
   - [02.RocketMQ 源码分析（二）NameServer 路由中心](./source_code/02.RocketMQ%20源码分析（二）NameServer%20路由中心.md)
+  - [03.RocketMQ 源码分析（三）Producer 生产者](./source_code/03.RocketMQ%20源码分析（三）Producer%20生产者.md)
 - RocketMQ 扩展
   - [01.单机部署多个 RocketMQ 集群](./extend/01.单机部署多个%20RocketMQ%20集群.md)
   - [02.同一工程向多个 RocketMQ 集群发送消息](./extend/02.同一工程向多个%20RocketMQ%20集群发送消息.md)
