@@ -6,7 +6,7 @@
 - MySQL 高级
 - MySQL 扩展
   - 分库分表
-    - [01.分库分表介绍](./extend/01.分库分表介绍.md)
+    - [01.分库分表介绍](./extend/分库分表/01.分库分表介绍.md)
 
 ## 资源推荐
 - [MySQL 基础教程](https://www.bilibili.com/video/BV1cE41177AJ/)
