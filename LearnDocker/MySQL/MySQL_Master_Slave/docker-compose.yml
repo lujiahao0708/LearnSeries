@@ -7,14 +7,12 @@ services:
       - "MYSQL_ROOT_PASSWORD=root"
     ports:
       - "3307:3306"
-    restart: always
+    links:
+      - mysql_slave_01
     volumes:
-      - /Users/lujiahao/dockerData/mysql/master/log:/var/log/mysql
-      - /Users/lujiahao/dockerData/mysql/master/data:/var/lib/mysql
-      - /Users/lujiahao/dockerData/mysql/master/conf:/etc/mysql
-#    extra_hosts:
-#      - "a.com:192.168.31.174"
-#      - "b.com:192.168.31.136"
+      - ./data/mysql/master/log:/var/log/mysql
+      - ./data/mysql/master/data:/var/lib/mysql
+      - ./master/my.cnf:/etc/my.cnf
 
   mysql_slave_01:
     container_name: mysql_slave_01
@@ -23,12 +21,7 @@ services:
       - "MYSQL_ROOT_PASSWORD=root"
     ports:
       - "3308:3306"
-    depends_on:
-      - mysql_master
-    links:
-      - mysql_master
-    restart: always
     volumes:
-      - /Users/lujiahao/dockerData/mysql/slave01/log:/var/log/mysql
-      - /Users/lujiahao/dockerData/mysql/slave01/data:/var/lib/mysql
-      - /Users/lujiahao/dockerData/mysql/slave01/conf:/etc/mysql
+      - ./data/mysql/slave01/log:/var/log/mysql
+      - ./data/mysql/slave01/data:/var/lib/mysql
+      - ./slave01/my.cnf:/etc/my.cnf
