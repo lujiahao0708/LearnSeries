@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>club.hellodeveloper</groupId>
-    <artifactId>HorizontalSplit</artifactId>
+    <artifactId>Sharding-JDBC</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>

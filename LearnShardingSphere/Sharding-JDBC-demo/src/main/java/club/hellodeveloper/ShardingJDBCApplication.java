@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("club.hellodeveloper.mapper")
-public class HorizontalSplitApplication {
+public class ShardingJDBCApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HorizontalSplitApplication.class, args);
+		SpringApplication.run(ShardingJDBCApplication.class, args);
 	}
 
 }

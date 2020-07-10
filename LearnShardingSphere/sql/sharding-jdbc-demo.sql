@@ -97,3 +97,27 @@ CREATE TABLE `t_order_1`(
     `driver_id`  bigint(20) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+######################################################################
+# 公共表
+drop database if exists order_0;
+create database order_0;
+use order_0;
+drop table if exists t_city;
+CREATE TABLE `t_city`(
+    `id`       bigint(20) NOT NULL,
+    `name` varchar(255)  DEFAULT NULL,
+    `code`  bigint(20) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+drop database if exists order_1;
+create database order_1;
+use order_1;
+drop table if exists t_city;
+CREATE TABLE `t_city`(
+    `id`       bigint(20) NOT NULL,
+    `name` varchar(255)  DEFAULT NULL,
+    `code`  bigint(20) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
