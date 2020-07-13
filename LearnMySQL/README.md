@@ -4,6 +4,12 @@
 ## 目录
 - MySQL 基础
 - MySQL 高级
+  - [1.MySQL架构介绍](./advanced/1.MySQL架构介绍.md)
+  - [2.SQL执行顺序](./advanced/2.SQL执行顺序.md)
+  - [3.SQL基础回顾](./advanced/3.SQL基础回顾.md)
+  - [4.MySQL索引简介](./advanced/4.MySQL索引简介.md)
+  - [5.MySQL索引分析神器-Explain](./advanced/5.MySQL索引分析神器-Explain.md)
+  - [6.MySQL索引-初步案例](./advanced/6.MySQL索引-初步案例.md)
 - MySQL 扩展
   - 分库分表
     - [01.分库分表介绍](./extend/分库分表/01.分库分表介绍.md)
