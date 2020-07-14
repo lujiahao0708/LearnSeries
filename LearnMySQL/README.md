@@ -11,6 +11,8 @@
   - [5.MySQL索引分析神器-Explain](./advanced/5.MySQL索引分析神器-Explain.md)
   - [6.MySQL索引-初步案例](./advanced/6.MySQL索引-初步案例.md)
 - MySQL 扩展
+  - 索引
+    - [01.隐式类型转换引发索引失效](./extend/01.隐式类型转换引发索引失效.md)
   - 分库分表
     - [01.分库分表介绍](./extend/分库分表/01.分库分表介绍.md)
 
