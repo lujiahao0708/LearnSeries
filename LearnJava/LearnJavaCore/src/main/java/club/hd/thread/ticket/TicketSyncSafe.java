@@ -1,4 +1,4 @@
-package com.lujiahao.thread.ticket;
+package club.hd.thread.ticket;
 
 /**
  * 使用synchronized关键字实现同步

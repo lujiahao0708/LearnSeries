@@ -1,4 +1,4 @@
-package com.lujiahao.thread;
+package club.hd.thread;
 
 /**
  * 多线程demo

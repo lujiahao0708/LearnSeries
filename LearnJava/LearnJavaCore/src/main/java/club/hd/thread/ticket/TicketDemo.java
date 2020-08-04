@@ -1,4 +1,4 @@
-//package com.lujiahao.thread.ticket;
+//package club.hd.thread.ticket;
 //
 ///**
 // * 买票程序

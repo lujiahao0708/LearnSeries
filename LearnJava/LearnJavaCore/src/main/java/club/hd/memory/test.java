@@ -1,4 +1,4 @@
-package com.lujiahao.memory;
+package club.hd.memory;
 
 public class test {
 }

@@ -1,4 +1,4 @@
-package com.lujiahao.object;
+package club.hd.object;
 
 
 import java.util.HashMap;

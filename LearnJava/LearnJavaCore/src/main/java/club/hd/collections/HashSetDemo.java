@@ -1,4 +1,4 @@
-package com.lujiahao.collections;
+package club.hd.collections;
 
 import java.util.HashSet;
 import java.util.Set;

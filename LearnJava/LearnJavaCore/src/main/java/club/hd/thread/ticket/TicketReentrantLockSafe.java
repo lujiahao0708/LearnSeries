@@ -1,4 +1,4 @@
-package com.lujiahao.thread.ticket;
+package club.hd.thread.ticket;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

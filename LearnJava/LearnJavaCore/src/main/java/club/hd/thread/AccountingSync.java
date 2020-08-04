@@ -1,4 +1,4 @@
-package com.lujiahao.thread;
+package club.hd.thread;
 
 public class AccountingSync implements Runnable{
     static AccountingSync instance=new AccountingSync();

@@ -1,6 +1,5 @@
-package com.lujiahao.memory.leak;
+package club.hd.memory.leak;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.HashSet;
