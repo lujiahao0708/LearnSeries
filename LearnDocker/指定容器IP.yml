@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mysql_master:
+    container_name: mysql_master
+    image: mysql:5.7
+    environment:
+      - "MYSQL_ROOT_PASSWORD=1234"
+    ports:
+      - "3306:3306"
+    networks:
+      canal_network:
+        ipv4_address: 172.24.0.2
+  canal_server:
+    container_name: canal_server
+    image: canal/canal-server:v1.1.4
+    ports:
+      - 11111:11111
+    depends_on:
+      - mysql_master
+    networks:
+      canal_network:
+        ipv4_address: 172.24.0.3
+
+networks:
+  canal_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.24.0.0/24"
