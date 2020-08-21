@@ -1,0 +1,35 @@
+version: '3'
+services:
+  mysql_master:
+    container_name: mysql_master
+    image: mysql:5.7
+    environment:
+      - "MYSQL_ROOT_PASSWORD=1234"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/mysql/master/log:/var/log/mysql
+      - ./data/mysql/master/data:/var/lib/mysql
+      - ./conf/mysql_master.cnf:/etc/my.cnf
+    networks:
+      self_network:
+        ipv4_address: 172.25.0.2
+  canal_server:
+    container_name: canal_server
+    image: canal/canal-server:v1.1.4
+    ports:
+      - 11111:11111
+    volumes:
+      - ./conf/canal_server/canal.properties:/home/admin/canal-server/conf/canal.properties
+      - ./conf/canal_server/example/instance.properties:/home/admin/canal-server/conf/example/instance.properties
+      - ./data/logs:/home/admin/canal-server/logs
+    depends_on:
+      - mysql_master
+    networks:
+      self_network:
+        ipv4_address: 172.25.0.3
+
+networks:
+  self_network:
+    external:
+      name: self_network
