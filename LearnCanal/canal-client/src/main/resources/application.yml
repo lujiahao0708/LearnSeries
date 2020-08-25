@@ -1,0 +1,14 @@
+canal:
+  simple:
+    serverIp: 127.0.0.1
+    serverPort: 11111
+    username:
+    password:
+    destination: example
+    filter:
+  cluster:
+    username:
+    password:
+    destination: example
+    filter:
+    zkServers: 127.0.0.1:2181
